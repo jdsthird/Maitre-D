@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
       # t.string :username
       # t.string :password
+      # t.string :race_character
       # t.timestamps
 
 

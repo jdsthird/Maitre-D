@@ -1,3 +1,3 @@
 get '/' do
- "Haven't done this yet"
+ erb :page
 end
