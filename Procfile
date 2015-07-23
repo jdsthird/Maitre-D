@@ -1,3 +1,3 @@
 web: bundle exec rackup config.ru -p $PORT
 
-cookies - ovens
+cookies - ovens - bakeries
