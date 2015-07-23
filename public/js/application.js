@@ -1,7 +1,7 @@
 
 var userTypes = {
-  newUser: "<input id='hidden-new' class='user-login-type' type='hidden' name='user[type]' value='new'>",
-  loginUser: "<input id='hidden-login' class='user-login-type' type='hidden' name='user[type]' value='login'>"
+newUser: "<input id='hidden-new' class='user-login-type' type='hidden' name='user[type]' value='new'>",
+loginUser: "<input id='hidden-login' class='user-login-type' type='hidden' name='user[type]' value='login'>"
 };
 
 function loginToggle(){
@@ -108,9 +108,6 @@ $(document).ready(function() {
   var kathulu = new userManager();
   kathulu.attachToUserButtons();
   
-
-
-
 
 
  }); // closes ready
