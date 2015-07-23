@@ -20,21 +20,21 @@ function userManager() {
   this.users = []
 };
 
-userManager.prototype.deployUserButtons = function(){
-  this.bindLoginUserButton();
-  this.bindNewUserButton();
-  this.bindSubmitUserButton();
+userManager.prototype.attachToUserButtons = function(){
+  this.attachToLoginUserButton();
+  this.attachToNewUserButton();
+  this.attachToSubmitUserButton();
 };
 
-userManager.prototype.bindLoginUserButton = function(){
-$("#login-button").on("click", function(e){
+userManager.prototype.attachToLoginUserButton = function(){
+  $("#login-button").on("click", function(e){
     e.preventDefault();
     loginToggle();
     $("#user-form").append(userTypes.loginUser)
   });
 };
 
-userManager.prototype.bindNewUserButton = function(){
+userManager.prototype.attachToNewUserButton = function(){
   $("#new-user-button").on("click", function(e){
     e.preventDefault();
     loginToggle();
@@ -42,30 +42,31 @@ userManager.prototype.bindNewUserButton = function(){
   });
 };
 
-userManager.prototype.bindSubmitUserButton = function(){
+userManager.prototype.attachToSubmitUserButton = function(){
   $("#user-form").on("submit", function(e){
     e.preventDefault();
     loginToggle();
     $(".user-login-type").remove();
 
-    // this is the form right now, parent is user-container...
-    // can't remember why I cared about this right now
-    // I think I wanted this for/because of capturing the
-    var params = $(this).serialize();
-
-    $.ajax({
-      url: "not/defined",
-      data: params,
-      dataType: ''
-    })
+    var speedRacer = new Racer();
+    speedRacer.initialize($("#user-form").serialize());
+    //will the "this" below go to kathulu or #user-form..?
+    this.users.push(speedRacer);
   });
 };
+
+function Racer() {};
+
+Racer.prototype.initialiaze = function(userParams){
+  this.username = userParams.username; // not sure if this works
+};
+
+
 
                     // under construction
                     userManager.prototype.prepareUserSession = function(){
                       // this does not seem to be working the way I expect
-                      // this seems to work in console
-                      // function getKey(){ $(document).on('keypress', function(e){ console.log(e.keyCode)})}
+                      //
                       $("#race-character-promp").toggle();
                       return $("body").on('keydown', function(press){
                         if(!press.metaKey){
@@ -85,17 +86,28 @@ userManager.prototype.bindSubmitUserButton = function(){
                       });
                     };
 
-// userManager needs...
-// take login data from the form
-// validate / create user in db
-// create & store a js-user obj
+  // userManager needs...
+  // take login data from the form
+    // to do this, I need to set up an event listener for the form ...in an initialize method?
+    // 
+  // validate / create user in db
+  // create & store a js-user obj
 
+  userManager.prototype.kathulu = function() {
+    this.request = this.fetchUser
+  };
+
+
+
+  userManager.prototype.loginUser = function(){
+
+  };
 
 $(document).ready(function() {
+
   var kathulu = new userManager();
-  kathulu.deployUserButtons();
-
-
+  kathulu.attachToUserButtons();
+  
 
 
  }); // closes ready
