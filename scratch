@@ -1,0 +1,7 @@
+so, getting this deployed... hhahahahhah
+
+0 - download "heroku toolbelt" (config)
+1 - heroku create (from "git"ed file)
+2 - git push heroku master (gives target url)
+
+https://git.heroku.com/polar-reaches-9765.git
