@@ -3,7 +3,7 @@ class CreateTables < ActiveRecord::Migration
     create_table :tables do |t|
       t.integer :number		
       t.integer :number_of_seats
-      t.references :event
+      t.references :event null: false
 
       t.timestamps null: false
     end
