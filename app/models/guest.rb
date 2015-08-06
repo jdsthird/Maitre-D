@@ -4,5 +4,6 @@ class Guest < ActiveRecord::Base
   has_many :pairings
   has_many :pairs, through: :pairings
 
-  validates :event, presence: true
+  validates_presence_of :event
+  validates_presence_of :first_name
 end
