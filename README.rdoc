@@ -1,27 +1,40 @@
-== README
+= Maitre-DBC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Group Members
 
-Things you may want to cover:
+* Kilima Glenn
+* Christine ('Tine) Onayemi
+* Edwin Steinmetz
+* John Sternberg
 
-* Ruby version
+=== Summary
 
+Maitre-DBC is a web app that generates seating charts based upon user specifications.
+
+=== MVP User Stories
+
+* As a user, I can (AUIC) create an account
+* AUIC login/logout
+* AUIC create a new event
+* AUIC add guests
+* AUIC add seating requirements (table capacity and number of tables)
+* AUIC specify guest associations (positive only)
+* AUIC view a completed seating chart in list form (which satisfies the specifications provided)
+* Bonus: AUIC view a seating chart visual
+
+=== Specs
+
+* Ruby version 2.2.2
 * System dependencies
-
 * Configuration
-
 * Database creation
-
 * Database initialization
-
 * How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
-
 * ...
+
+
 
 
 Please feel free to use a different markup language if you do not plan to run
