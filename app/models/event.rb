@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :host, class_name: :"User"
+  has_many :tables
+  has_many :guests
+
 
   validates_presence_of :name
   validates_presence_of :zip_code
