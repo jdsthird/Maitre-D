@@ -1,12 +1,9 @@
 class User < ActiveRecord::Base
-      # t.string :username
-      # t.string :password
-      # t.string :race_character
-      # t.timestamps
+  has_many :events, foreign_key: :host_id
 
-
-
-  has_many :appearances
-  has_many :races, through: :appearances
-  has_many :wins, class_name: "Race", foreign_key: :winner_id
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_presence_of :email
+  validates_presence_of :username
+  validates_presence_of :password_hash
 end
