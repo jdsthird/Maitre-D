@@ -2,7 +2,9 @@ module SeatingHelper
 
   # aggregate guests into collections
   def group_guests(guests)
-    
+    guests.map do |guest|
+      
+    end
   end
 
   # generate permutations of collections
