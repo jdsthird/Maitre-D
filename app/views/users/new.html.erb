@@ -1,0 +1,33 @@
+<div class = "all-forms">
+<h4>Please Sign Up </h4>
+<br>
+  <%= form_for :user, url: users_path do |f| %>
+    <div class = "input-field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class = "input-field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    <div class = "input-field">
+      <%=f.label :email, placeholder: "Email" %>
+      <%= f.text_field :email %>
+    </div>
+    </div><div class = "input-field">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+
+    <div class = "input-field">
+      <%= f.label :password, placeholder: "Name" %>
+      <%= f.password_field :password %>
+    </div>
+  	<% end %>
+  <div class = "errors">
+    <% if @user %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
