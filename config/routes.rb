@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   put 'users/:id' => 'users#update'
   delete 'users/:id' => 'users#destroy'
 
+  get 'users/:id/events/:id' => 'events#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
