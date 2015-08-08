@@ -5,7 +5,7 @@ class Table < ActiveRecord::Base
 	validates_presence_of :number_of_seats
 	validates_presence_of :event
 
-  def valid?
+  def valid_seating?
     !self.overflowing? && guests_happy?
   end
 

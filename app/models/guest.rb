@@ -7,7 +7,7 @@ class Guest < ActiveRecord::Base
   validates_presence_of :event
   validates_presence_of :first_name
 
-  def happy?(guests)
-    (self.pairs & guests) == self.pairs
+  def happy?(guest_ids)
+    (self.pair_ids & guest_ids) == self.pair_ids
   end
 end
