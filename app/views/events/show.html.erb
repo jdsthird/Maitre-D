@@ -1,10 +1,13 @@
+<script type="text/javascript" src="../../assets/javascripts/d3/event-layout.js"></script>
+
 <h1><%= @event.name %></h1>
 <div class="floor-plan">
-  <% num_of_tables = 4 %>
+  <% num_of_tables = 10 %>
   <% seats_per_table = 10 %>
   <% counter = 1 %>
   <% num_of_tables.times do %>
-    <svg id="table-<%= counter %>"></svg>
+    <svg class="tables" id="table-<%= counter %>"></svg>
     <% counter += 1 %>
   <% end %>
 </div>
+
