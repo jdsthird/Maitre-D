@@ -33,6 +33,6 @@ module SeatingHelper
   end
   # run a method on each table to ensure it meets the requirements
   def tables_valid?(tables)
-    tables.all? { |table| table.valid? }
+    tables.all? { |table| table.valid_seating? }
   end
 end

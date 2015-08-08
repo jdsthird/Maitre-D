@@ -10,12 +10,12 @@ class Table < ActiveRecord::Base
   end
 
   def overflowing?
-    self.guests.count <= self.number_of_seats
+    self.guests.length > self.number_of_seats
   end
 
   def guests_happy?
     self.guests.all? do |guest|
-      guest.happy?(self.guests - guest)
+      p guest.happy?(self.guest_ids - [guest.id])
     end
   end
 end
