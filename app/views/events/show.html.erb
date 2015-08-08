@@ -1,0 +1,10 @@
+<h1><%= @event.name %></h1>
+<div class="floor-plan">
+  <% num_of_tables = 4 %>
+  <% seats_per_table = 10 %>
+  <% counter = 1 %>
+  <% num_of_tables.times do %>
+    <svg id="table-<%= counter %>"></svg>
+    <% counter += 1 %>
+  <% end %>
+</div>
