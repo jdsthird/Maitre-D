@@ -1,85 +1,26 @@
-<<<<<<< HEAD
-var test = d3.select("h1")
-  .style("background-color", "blue")
 
 
-var svg = d3.select('.tables').append("svg:g")
-  .attr("width", 150)
-  .attr("height", 150);
+    <title>D3 Graphic</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700|Exo:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="_/base.css">
+    <link rel="stylesheet" href="style.css">
 
-var originX = 75;
-var originY = 75;
-var tableRadius = 40;
 
-var table = svg.append("svg:circle")
-  .attr("cx", originX)
-  .attr("cy", originY)
-  .attr("r", tableRadius)
-  .style("fill", "#595AB7");
+        <h2>D3 Graphic</h2>
+        <div id="chart"></div>
+    </div>
+   <script>var bardata = [];
 
-// ({
-//   cx: originX,
-//   cy: originY,
-//   r: tableRadius,
-//   fill: "#595AB7"
-// });
-=======
-
-var h = 400,
-    w = 400;
-var circleWidth = 5;
-
-var palette = {
-
-    "lightgray": "#819090",
-    "gray": "#708284",
-    "mediumgray": "#536870",
-    "darkgray": "#475B62",
-
-    "darkblue": "#0A2933",
-    "darkerblue": "#042029",
-
-    "paleryellow": "#FCF4DC",
-    "paleyellow": "#EAE3CB",
-    "yellow": "#A57706",
-    "orange": "#BD3613",
-    "red": "#D11C24",
-    "pink": "#C61C6F",
-    "purple": "#595AB7",
-    "blue": "#2176C7",
-    "green": "#259286",
-    "yellowgreen": "#738A05"
+for (var i=0; i < 30; i++) {
+    bardata.push(Math.round(Math.random()*30)+20)
 }
 
-var nodes = [
-    { name: "Parent"},
-    { name: "child1"},
-    { name: "child2", target: [0]},
-    { name: "child3", target: [0]},
-    { name: "child4", target: [1]},
-    { name: "child5", target: [0,1,2,3]},
+var height = 400,
+    width = 600,
+    barWidth = 50,
+    barOffset = 5;
 
-    ];
-
-var links = [];
-
-for (var i = 0; var i< nodes.length; i++) {
-    if(nodex[i].target !== undefined) {
-        for (var x = 0; x < nodes[i].target; x++ ){
-            links.push({
-                source: nodes[i],
-                target: nodes[i].target[x]
-            })
-        }
-    }
-};
-
-var myChart = d3.select('#chart')
-    .append('svg')
-    .attr('width', w)
-    .attr('height', h)
-
-var force = d3.layout.force
+var tempColor;
 
 var colors = d3.scale.linear()
 .domain([0, bardata.length*.33, bardata.length*.66, bardata.length])
@@ -126,14 +67,12 @@ var myChart = d3.select('#chart').append('svg')
 
         tempColor = this.style.fill;
         d3.select(this)
-            .transition()
             .style('opacity', .5)
             .style('fill', 'yellow')
     })
 
     .on('mouseout', function(d) {
         d3.select(this)
-            .transition().duration(800)
             .style('opacity', 1)
             .style('fill', tempColor)
     })
@@ -151,4 +90,25 @@ myChart.transition()
     .duration(1000)
     .ease('elastic')
 
->>>>>>> 0aaaab6777be7f4a40993307c23a7098e69b1722
+</script>
+   <svg width="600" height="400"
+            style="background: #93A1A1">
+            <rect x="250" y="150" width="100"
+                height="100" style="fill: #C61C6F" />
+            <circle cx="300" cy="200" r="50"
+                style = "fill: #840043" />
+            <text x = "10" y = "390"
+                font-family = "sans-serif"
+                font-size = "25"
+                fill="white">SVG Graphics</text>
+            <g id="triangle">
+                <polyline points="10 35, 30 10, 50 35"
+                    style="fill: #F7B330;" />
+            </g>
+            <use xlink:href="#triangle"
+                x="30" y="0" />
+        </svg>
+
+show page
+Logout
+<li><%= link_to 'Logout', logout_path(current_user), :method => :delete %></li>
