@@ -15,7 +15,7 @@ RSpec.describe SeatingHelper, type: :helper do
     end
 
     xit "returns an array of arrays" do
-      expect(group_guests(guests)).to satisfy { |group| group.class == Array }
+      expect(group_guests(guests)).to all(be_an Array)
     end
 
     xit "groups pairs together" do
@@ -25,13 +25,22 @@ RSpec.describe SeatingHelper, type: :helper do
     end
   end
 
-  describe "#seat_guests" do
-    xit "returns an array of tables" do
+  
 
+  describe "#seat_guests" do
+    it "throws an error if the tables are not of the same size" do
+      tables[1].number_of_seats = 1
+      expect{seat_guests(tables, guests)}.to raise_error
     end
 
-    xit "correctly maps guests to tables" do
-      
+    it "returns an array of tables" do
+      expect(seat_guests(tables, guests)).to all(be_a Table)
+    end
+
+    it "correctly maps guests to tables" do
+      assignments = seat_guests(tables, guests + [guest])
+      p "Assignments: #{assignments}"
+      expect(assignments.first.guests).to eq guests
     end
   end
 

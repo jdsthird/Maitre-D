@@ -45,9 +45,9 @@ module SeatingHelper
     unless tables.all? { |table| table.number_of_seats == number_of_seats }
       raise ArgumentError.new("all tables must have an equal number of seats")
     end
-    groups = guests.each_slice(number_of_seats)
-    tables.each do |table|
-      table.guests << groups.shift
+    groups = guests.each_slice(number_of_seats).to_a
+    groups.each_with_index do |group, index|
+      tables[index].guests << group
     end
     tables
   end
