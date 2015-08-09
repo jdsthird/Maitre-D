@@ -15,7 +15,7 @@ class Table < ActiveRecord::Base
 
   def guests_happy?
     self.guests.all? do |guest|
-      p guest.happy?(self.guest_ids - [guest.id])
+      guest.happy?(self.guests - [guest])
     end
   end
 end
