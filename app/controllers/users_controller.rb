@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Maitre-DBC!"
-      redirect_to @user
+      redirect_to users_path
     else
+      @errors = "Your username/password combination is incorrect!"
       render 'new'
     end
   end
