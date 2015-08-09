@@ -47,16 +47,13 @@ module SeatingHelper
     end
     groups = guests.each_slice(number_of_seats).to_a
     groups.each_with_index do |group, index|
-      tables[index].guests << group
+      tables[index].guests = group
     end
     tables
   end
   # run a method on each table to ensure it meets the requirements
   def tables_valid?(tables)
     tables.all? do |table|
-      unless table.valid_seating?
-        p table.guests.map(&:first_name)
-      end
       table.valid_seating?
     end
   end

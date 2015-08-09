@@ -56,7 +56,7 @@ RSpec.describe Table, type: :model do
       expect(table.valid_seating?).to be false
     end
 
-    it "returns false when the the guests are not all happy" do
+    it "returns false when the guests are not all happy" do
       table.stub(:overflowing?).and_return(false)
       table.stub(:guests_happy?).and_return(false)
       expect(table.valid_seating?).to be false

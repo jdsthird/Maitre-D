@@ -26,40 +26,52 @@ RSpec.describe SeatingHelper, type: :helper do
   # end
 
   describe "#check_permutations" do
-    it "returns valid tables" do
+    it "returns an array" do
       guests.first.pairs << guest
       expect(check_permutations(guests + [guest], tables)).to be_an Array
     end
+
+    it "..of tables" do
+      guests.first.pairs << guest
+      assignment = check_permutations(guests + [guest], tables)
+      expect(assignment).to all(be_a Table)
+    end
+
+    it "places pairs at the same table" do
+      guests.first.pairs << guest
+      assignment = check_permutations(guests + [guest], tables)
+      expect(assignment.first.guests).to include(guest, guests.first)
+    end
   end
 
-  # describe "#seat_guests" do
-  #   it "throws an error if the tables are not of the same size" do
-  #     tables[1].number_of_seats = 1
-  #     expect{seat_guests(tables, guests)}.to raise_error
-  #   end
+  describe "#seat_guests" do
+    it "throws an error if the tables are not of the same size" do
+      tables[1].number_of_seats = 1
+      expect{seat_guests(tables, guests)}.to raise_error
+    end
 
-  #   it "returns an array of tables" do
-  #     expect(seat_guests(tables, guests)).to all(be_a Table)
-  #   end
+    it "returns an array of tables" do
+      expect(seat_guests(tables, guests)).to all(be_a Table)
+    end
 
-  #   it "correctly maps guests to tables" do
-  #     assignments = seat_guests(tables, guests + [guest])
-  #     p "Assignments: #{assignments}"
-  #     expect(assignments.first.guests).to eq guests
-  #   end
-  # end
+    it "correctly maps guests to tables" do
+      assignments = seat_guests(tables, guests + [guest])
+      p "Assignments: #{assignments}"
+      expect(assignments.first.guests).to eq guests
+    end
+  end
 
-  # describe "#tables_valid?" do
-  #   it "returns false if any table is not valid" do
-  #     guests.first.pairs << guest
-  #     tables[0].guests += guests
-  #     tables[1].guests << guest
-  #     expect(tables_valid?(tables)).to be false
-  #   end
+  describe "#tables_valid?" do
+    it "returns false if any table is not valid" do
+      guests.first.pairs << guest
+      tables[0].guests += guests
+      tables[1].guests << guest
+      expect(tables_valid?(tables)).to be false
+    end
 
-  #   it "returns true when all tables are valid" do
-  #     table.stub(:valid_seating?).and_return true
-  #     expect(tables_valid?(tables)).to be true
-  #   end
-  # end
+    it "returns true when all tables are valid" do
+      table.stub(:valid_seating?).and_return true
+      expect(tables_valid?(tables)).to be true
+    end
+  end
 end

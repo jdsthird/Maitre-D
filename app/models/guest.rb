@@ -8,6 +8,6 @@ class Guest < ActiveRecord::Base
   validates_presence_of :first_name
 
   def happy?(guests)
-    (self.pairs & guests) == self.pairs
+    self.pairs.all? { |pair| guests.include?(pair) }
   end
 end
