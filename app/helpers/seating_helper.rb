@@ -29,11 +29,11 @@ module SeatingHelper
 
   # generate permutations of collections
   def check_permutations(guests, tables)
-    guests.permutation.each do |permutation|
-      # guests = permutation.flatten
-      tables = seat_guests(tables, guests)
-      if tables_valid?(tables)
-        return tables
+    guests.permutation.each do |seating_order|
+    #   # guests = permutation.flatten
+      possibility = seat_guests(tables, seating_order)
+      if tables_valid?(possibility)
+        return possibility
       end
     end
     false
@@ -53,6 +53,11 @@ module SeatingHelper
   end
   # run a method on each table to ensure it meets the requirements
   def tables_valid?(tables)
-    tables.all? { |table| table.valid_seating? }
+    tables.all? do |table|
+      unless table.valid_seating?
+        p table.guests.map(&:first_name)
+      end
+      table.valid_seating?
+    end
   end
 end
