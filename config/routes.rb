@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
- 
+
   resources :events
 
-  resources :pairings, only: [:new, :create, :destroy]
- 
+  resources :pairings, only: [:index, :create, :destroy]
+
 
   get 'signup' => 'users#new'
   post 'users' => 'users#create'
@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # get 'users/:user_id/events/:id' => 'events#show'
 
   get 'users/:user_id/events/:id' => 'events#show'
+
+  resources :guests
+
+  resources :tables
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

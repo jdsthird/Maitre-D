@@ -1,10 +1,7 @@
 class PairingsController < ApplicationController
 
-	def new
-		# off line until current event is up
-		# @guestList = current_event.guests
-
-		@guestList = Guest.all
+	def index
+		@guestList = current_event.guests
 	end
 
 	def create
@@ -14,6 +11,7 @@ class PairingsController < ApplicationController
 		other_pairing = Pairing.new(guest: pair,
 																pair: guest)
 		pairing.save && other_pairing.save
+		
 		
 	end
 

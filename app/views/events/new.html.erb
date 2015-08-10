@@ -7,10 +7,23 @@
       <%= f.label :name %><br>
       <%= f.text_field :name%>
     </div>
-
+  
+   <div class="input-field">
+        <%= f.label "number of tables" %><br>
+        <%= f.fields_for :table do |tf| %>
+        <%=tf.text_field :number %>
+        <% end %>
+    </div>
     <div class="input-field">
-      <%= f.label :zip_code %><br>
-      <%= f.text_field :zip_code%>
+      <%= f.label "number of seats" %><br>
+        <%= f.fields_for :table do |tf| %>
+        <%=tf.text_field :number_of_seats %>
+        <% end %>
+    </div>
+
+   <div class="input-field">
+        <%= f.label :zip_code %><br>
+        <%= f.text_field :zip_code%>
     </div>
 
     <div class="input-field">
@@ -26,7 +39,7 @@
     <div class="input-field">
       <%= f.label :address_line_two %><br>
       <%= f.text_field :address_line_two%>
-    </div>
+    </div> 
 
     <div class="input-field">
       <%= f.label :begins_at %><br>
