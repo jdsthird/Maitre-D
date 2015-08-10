@@ -1,5 +1,7 @@
 module ApplicationHelper
-  include SeatingHelper
-  include WelcomeHelper
   include EventsHelper
+  include SeatingHelper
+  include SessionsHelper
+  include UsersHelper
+  include WelcomeHelper
 end
