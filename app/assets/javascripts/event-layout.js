@@ -38,6 +38,21 @@ for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
         stroke: "#C61C6F"
     });
 
+<<<<<<< HEAD
+    var seatCounter = 1;
+
+    group.append("text").attr({
+        id: "table-" + tableCounter + "-seat-" + seatCounter,
+        x: chairOriginX - (chairWidth / 2),
+        y: chairOriginY - (chairWidth / 2),
+        width: chairWidth * 2,
+        opacity: 1,
+        height: chairWidth * 2
+        // fill: "none"
+    }).text(function(tableCounter, seatCounter) {
+        return this.id;
+    });
+=======
     // var seatCounter = 1;
 
     // group.append("text").attr({
@@ -51,6 +66,7 @@ for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
     // }).text(function(tableCounter, seatCounter) {
     //     return "test";
     // });
+>>>>>>> da3ac1bb463452d1708c5e0336d60a5e623e223f
 
     var rotation = 0;
 
