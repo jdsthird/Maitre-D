@@ -57,6 +57,7 @@ GEM
       railties (>= 3.0, < 5.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.5.2)
     faker (1.4.3)
@@ -97,6 +98,11 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.3)
       sprockets-rails
+    rails-backbone (1.2.0)
+      coffee-rails
+      ejs
+      jquery-rails
+      railties
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -174,11 +180,13 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   d3-rails
   d3js-rails
+  ejs
   faker
   jbuilder (~> 2.0)
   jquery-rails
   pg
   rails (= 4.2.3)
+  rails-backbone
   rails_12factor
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
