@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def show
    @user = current_user
    @event = Event.find(params[:id])
-   session[:event_id] = @event.id
+   update_current_event(@event)
   end
 
   def new
