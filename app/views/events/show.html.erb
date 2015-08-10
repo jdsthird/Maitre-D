@@ -7,11 +7,10 @@
 
 <h1><%= @event.name %></h1>
 <div class="floor-plan">
-  <% num_of_tables = @num_of_tables %>
   <% seats_per_table = @number_of_seats %>
   <% counter = 1 %>
-  <% num_of_tables.times do %>
-    <svg class="event-table" id="table-<%= counter %>"></div>
+  <% @num_of_tables.times do %>
+    <svg class="event-table" id="table-<%= counter %>"></svg>
     <% counter += 1 %>
   <% end %>
 </div>
@@ -20,7 +19,7 @@
 // var test = d3.select("h1")
   // .style("background-color", "blue")
 
-var numOfTables = <%= num_of_tables %>
+var numOfTables = <%= @num_of_tables %>
 var seatsPerTable = <%= seats_per_table %>;
 // console.log(seatsPerTable);
 var rotationFactor = Math.floor(360 / seatsPerTable);
@@ -57,19 +56,19 @@ for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
         stroke: "#C61C6F"
     });
 
-    var seatCounter = 1;
+    // var seatCounter = 1;
 
-    group.append("text").attr({
-        x: chairOriginX - (chairWidth / 2),
-        y: chairOriginY - (chairWidth / 2),
-        width: chairWidth * 2,
-        opacity: 1,
-        height: chairWidth * 2,
-        fill: "none",
-        id: "table-" + tableCounter + "seat-" + seatCounter
-    }).text(function(tableCounter, seatCounter) {
-        return "test";
-    });
+    // group.append("text").attr({
+    //     x: chairOriginX - (chairWidth / 2),
+    //     y: chairOriginY - (chairWidth / 2),
+    //     width: chairWidth * 2,
+    //     opacity: 1,
+    //     height: chairWidth * 2
+    //     // fill: "none",
+    //     // id: "table-" + tableCounter + "seat-" + seatCounter
+    // }).text(function(tableCounter, seatCounter) {
+    //     return "test";
+    // });
 
     var rotation = 0;
 
