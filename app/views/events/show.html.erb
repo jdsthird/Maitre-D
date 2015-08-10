@@ -1,87 +1,92 @@
 
 <%= link_to 'Logout', logout_path(current_user), :method => :delete %>
 <p>Event Host: <strong><%= @user.username %></strong></p>
+<%= link_to 'Add Guest', new_guest_path %>
 
 <h1><%= @event.name %></h1>
 <div class="floor-plan">
-  <% num_of_tables = 6 %>
-  <% seats_per_table = 7 %>
+  <% seats_per_table = @number_of_seats %>
   <% counter = 1 %>
-  <% num_of_tables.times do %>
-    <svg class="event-table" id="table-<%= counter %>"></div>
+  <% @num_of_tables.times do %>
+    <svg class="event-table" id="table-<%= counter %>"></svg>
     <% counter += 1 %>
   <% end %>
 </div>
 
 <script>
-var test = d3.select("h1")
-  .style("background-color", "blue")
+// var test = d3.select("h1")
+  // .style("background-color", "blue")
 
-var originX = 200;
-var originY = 200;
-var innerCircleRadius = 40;
-var outerCircleRadius = 60;
+var numOfTables = <%= @num_of_tables %>
+var seatsPerTable = <%= seats_per_table %>;
+// console.log(seatsPerTable);
+var rotationFactor = Math.floor(360 / seatsPerTable);
 
-var table = svg.append(".event-table").attr({
-    cx: originX,
-    cy: originY,
-    r: 40,
-    fill: "white",
-    stroke: "black"
-});
+for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
+    var svg = d3.select('#table-' + tableCounter).append('svg')
+      .attr("width", 150)
+      .attr("height", 150);
+    var group = svg.append('g');
 
-var group = svg.append("g");
+    var originX = 75;
+    var originY = 75;
+    var tableRadius = 40;
+    var chairsRadius = 55;
+    var chairWidth = 15;
 
-var outerCircle = svg.append("circle").attr({
-    cx: originX,
-    cy: originY,
-    opacity: 0,
-    r: outerCircleRadius,
-    fill: "none",
-    stroke: "black"
-});
+    var table = group.append("circle").attr({
+      cx: originX,
+      cy: originY,
+      r: tableRadius,
+      fill: "#595AB7"
+    });
 
-var chairOriginX = originX + ((60) * Math.sin(0));
-var chairOriginY = originY - ((60) * Math.cos(0));
+    var chairOriginX = originX + (chairsRadius * Math.sin(0));
+    var chairOriginY = originY - (chairsRadius * Math.cos(0));
 
-var pointOnOuterCircle = svg.append("circle").attr({
-    cx: chairOriginX,
-    cy: chairOriginY,
-    opacity: 0,
-    r: 5,
-    fill: "black"
-});
+    group.append("rect").attr({
+        x: chairOriginX - (chairWidth / 2),
+        y: chairOriginY - (chairWidth / 2),
+        width: chairWidth,
+        opacity: 1,
+        height: chairWidth,
+        fill: "none",
+        stroke: "#C61C6F"
+    });
 
-var chairWidth = 20;
-var chair = svg.append("rect").attr({
-    x: chairOriginX - (chairWidth / 2),
-    y: chairOriginY - (chairWidth / 2),
-    width: chairWidth,
-    opacity: 0,
-    height: 20,
-    fill: "none",
-    stroke: "blue"
-});
+    // var seatCounter = 1;
 
-</script>
+    // group.append("text").attr({
+    //     x: chairOriginX - (chairWidth / 2),
+    //     y: chairOriginY - (chairWidth / 2),
+    //     width: chairWidth * 2,
+    //     opacity: 1,
+    //     height: chairWidth * 2
+    //     // fill: "none",
+    //     // id: "table-" + tableCounter + "seat-" + seatCounter
+    // }).text(function(tableCounter, seatCounter) {
+    //     return "test";
+    // });
 
+    var rotation = 0;
 
-   
-    <title>D3 Graphic</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700|Exo:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="_/base.css">
-    <link rel="stylesheet" href="style.css">
- 
-       
-        <h2>D3 Graphic</h2>
-        <div id="chart"></div>
-    </div>
-   <script>var bardata = [];
+    for (var i = 1; i < seatsPerTable; i++) {
+        var currentChair = group.append("rect").attr({
+            x: chairOriginX - (chairWidth / 2),
+            y: chairOriginY - (chairWidth / 2),
+            width: chairWidth,
+            opacity: 1,
+            height: chairWidth,
+            fill: "none",
+            stroke: "#C61C6F"
+        });
 
-for (var i=0; i < 30; i++) {
-    bardata.push(Math.round(Math.random()*30)+20)
-
+        rotation += rotationFactor;
+        currentChair.attr("transform", "rotate(" + rotation + ", " + originX + ", " + originY + ")");
+    }
 }
 
 </script>
+
+<div><%= @tables[0].guests[0].first_name %> <%= @tables[0].guests[0].last_name %></div>
 

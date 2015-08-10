@@ -1,37 +1,16 @@
 
-    <title>D3 Graphic</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700|Exo:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="_/base.css">
-    <link rel="stylesheet" href="style.css">
-
-
-        <h2>D3 Graphic</h2>
-        <div id="chart"></div>
-    </div>
     <script>
     bardata = <%= 30.times.map { (20..50).to_a.sample }.to_json %>;
     </script>
 
     <%= javascript_include_tag "our-first-d3-chart" %>
 
-   <svg width="600" height="400"
-            style="background: #93A1A1">
-            <rect x="250" y="150" width="100"
-                height="100" style="fill: #C61C6F" />
-            <circle cx="300" cy="200" r="50"
-                style = "fill: #840043" />
-            <text x = "10" y = "390"
-                font-family = "sans-serif"
-                font-size = "25"
-                fill="white">SVG Graphics</text>
-            <g id="triangle">
-                <polyline points="10 35, 30 10, 50 35"
-                    style="fill: #F7B330;" />
-            </g>
-            <use xlink:href="#triangle"
-                x="30" y="0" />
-        </svg>
-
-show page
-Logout
 <li><%= link_to 'Logout', logout_path(current_user), :method => :delete %></li>
+
+<div class="container">
+    <% @events.each do |event| %>
+        <ul id="event-list">
+            <li><%= link_to("#{event.name}", event) %></li>
+        </ul>
+    <% end %>
+</div>
