@@ -16,6 +16,12 @@ class EventsController < ApplicationController
   def create
     @user = current_user
     @event = @user.events.new(event_params)
+    @number = 1
+    params[:event][:table][:number].to_i.times do 
+      p params
+      Table.create!(number_of_seats: params[:event][:table][:number_of_seats], number: @number, event: @event)   
+      @number +=1
+    end
     if @event.save
       redirect_to @event
     else
