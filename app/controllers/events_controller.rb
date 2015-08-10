@@ -7,6 +7,10 @@ class EventsController < ApplicationController
   def show
    @user = current_user
    @event = Event.find(params[:id])
+   @guests = @event.guests
+   @num_of_tables = @event.tables.length
+   @number_of_seats = @event.tables[0].number_of_seats
+   @tables = seat_guests(@event.tables, @guests)
   end
 
   def new
