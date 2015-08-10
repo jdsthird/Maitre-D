@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :pairings, only: [:index, :create, :destroy]
+
 
   get 'signup' => 'users#new'
   post 'users' => 'users#create'
@@ -28,8 +30,6 @@ Rails.application.routes.draw do
   resources :guests
 
   resources :tables
-
-  resources :pairings
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

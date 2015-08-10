@@ -1,0 +1,44 @@
+<div class='container'>
+	<p>please indicate who must sit together, note if you put A+B & B+C, then A+C will be implied and does not need to be entered.  <button onclick="addGuest()">Add Guest</button>.</p>
+
+	<form action='/pairings' method='post' id='guest-form'>
+		<input name="authenticity_token" type="hidden" value="token_value">
+		<input type='submit' value='make relationship'>
+
+		<select name='guest_list[guest]'>
+			<% @guestList.each do |guest| %>
+				<option value=<%=guest.first_name%>><%=guest.first_name%></option>
+			<% end %>
+		</select> 
+		<select name='guest_list[pair]'>
+			<% @guestList.each do |guest| %>
+				<option value=<%=guest.first_name%>><%=guest.first_name%></option>
+			<% end %> 
+		</select>
+
+
+
+	</form>
+</div>
+
+
+<script type="text/template" id="form-field">
+	<select name='guest_list[][guest]'>
+		<% @guestList.each do |guest| %>
+			<option value=<%=guest.first_name%>><%=guest.first_name%></option>
+		<% end %>
+	</select> 
+	<select name='guest_list[][pair]'>
+		<% @guestList.each do |guest| %>
+			<option value=<%=guest.first_name%>><%=guest.first_name%></option>
+		<% end %> 
+	</select>
+</script>
+
+<script>
+ function addGuest(){
+ 	document.getElementById("#guest-form").append( _.template( $("#form-field").html(), {}))
+ }
+
+</script>
+
