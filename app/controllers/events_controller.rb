@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   def show
    @user = current_user
-   @event = Event.find(params[:id])
+   @event = current_event
    @guests = @event.guests
    @num_of_tables = @event.tables.length
    @number_of_seats = @event.tables[0].number_of_seats
@@ -21,9 +21,9 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.events.new(event_params)
     @number = 1
-    params[:event][:table][:number].to_i.times do 
+    params[:event][:table][:number].to_i.times do
       p params
-      Table.create!(number_of_seats: params[:event][:table][:number_of_seats], number: @number, event: @event)   
+      Table.create!(number_of_seats: params[:event][:table][:number_of_seats], number: @number, event: @event)
       @number +=1
     end
     if @event.save
