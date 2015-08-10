@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
 //= require d3
 
-//= require_tree .
+//= require_tree ../../vendor/assests/javascripts/.
+//= require_tree ./application/.
