@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
  
   resources :events
+
+  resources :pairings, only: [:new, :create, :destroy]
  
 
   get 'signup' => 'users#new'
