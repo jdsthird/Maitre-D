@@ -3,5 +3,6 @@ var Table = Backbone.Model.extend({
 });
 
 var Tables = Backbone.Collection.extend({
-  url: "/tables"
+  url: "/tables",
+  model: Table
 });

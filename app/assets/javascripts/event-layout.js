@@ -1,15 +1,16 @@
 // var test = d3.select("h1")
   // .style("background-color", "blue")
 
-// var numOfTables = 10;
-// var seatsPerTable = 10;
-
+var numOfTables = <%= @num_of_tables %>
+var seatsPerTable = <%= seats_per_table %>;
+// console.log(seatsPerTable);
 var rotationFactor = Math.floor(360 / seatsPerTable);
 
 for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
-    var group = d3.select('#table-' + tableCounter).append('g')
+    var svg = d3.select('#table-' + tableCounter).append('svg')
       .attr("width", 150)
       .attr("height", 150);
+    var group = svg.append('g');
 
     var originX = 75;
     var originY = 75;
@@ -37,6 +38,7 @@ for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
         stroke: "#C61C6F"
     });
 
+<<<<<<< HEAD
     var seatCounter = 1;
 
     group.append("text").attr({
@@ -50,6 +52,21 @@ for (var tableCounter = 1; tableCounter <= numOfTables; tableCounter++) {
     }).text(function(tableCounter, seatCounter) {
         return this.id;
     });
+=======
+    // var seatCounter = 1;
+
+    // group.append("text").attr({
+    //     x: chairOriginX - (chairWidth / 2),
+    //     y: chairOriginY - (chairWidth / 2),
+    //     width: chairWidth * 2,
+    //     opacity: 1,
+    //     height: chairWidth * 2
+    //     // fill: "none",
+    //     // id: "table-" + tableCounter + "seat-" + seatCounter
+    // }).text(function(tableCounter, seatCounter) {
+    //     return "test";
+    // });
+>>>>>>> da3ac1bb463452d1708c5e0336d60a5e623e223f
 
     var rotation = 0;
 
