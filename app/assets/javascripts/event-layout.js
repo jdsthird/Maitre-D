@@ -1,4 +1,4 @@
-var seatsPerTable = <%= seats_per_table %>;
+var seatsPerTable = 8;
 var rotationFactor = Math.floor(360 / seatsPerTable);
 
 var svg = d3.selectAll('.tables').append('svg')

@@ -1,6 +1,4 @@
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
-
 <%= link_to 'Logout', logout_path(current_user), :method => :delete %>
 <p>Event Host: <strong><%= @user.username %></strong></p>
 <%= link_to 'Add Guest', new_guest_path %>
