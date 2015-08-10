@@ -3,5 +3,6 @@ var Guest = Backbone.Model.extend({
 });
 
 var Guests = Backbone.Collection.extend({
-  url: "/guests"
+  url: "/guests",
+  model: Guest
 });

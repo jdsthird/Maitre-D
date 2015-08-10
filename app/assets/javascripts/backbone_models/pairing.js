@@ -3,5 +3,6 @@ var Pairing = Backbone.Model.extend({
 });
 
 var Pairings = Backbone.Collection.extend({
-  url: "/pairings"
+  url: "/pairings",
+  model: Pairing
 });
