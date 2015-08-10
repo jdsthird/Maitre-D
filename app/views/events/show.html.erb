@@ -1,5 +1,3 @@
-<%= javascript_include_tag "event-layout.js" %>
-
 <%= link_to 'Logout', logout_path(current_user), :method => :delete %>
 <p>Event Host: <strong><%= @user.username %></strong></p>
 <%= link_to 'Add Guest', new_guest_path %>
@@ -14,5 +12,4 @@
   <% end %>
 </div>
 
-<div><%= @tables[0].guests[0].first_name %> <%= @tables[0].guests[0].last_name %></div>
-
+<%= javascript_include_tag "event-layout.js" %>

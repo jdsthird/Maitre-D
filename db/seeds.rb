@@ -16,7 +16,7 @@ table_number = 1
   table_number += 1
 end
 
-100.times do
+91.times do
   Guest.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, event: event)
 end
 

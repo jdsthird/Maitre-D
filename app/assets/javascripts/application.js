@@ -16,7 +16,12 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require d3
-
-//= require_tree ../../vendor/assests/javascripts/.
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree ./application/.
+
+Backbone.history.start();
+
+$(document).ready(function() {
+  // var localVar = new ViewClassName();
+  // $(location).append(localVar.el);
+});
