@@ -1,26 +1,4 @@
-
-<script src="http://d3js.org/d3.v3.min.js"></script>
-
-<%= link_to 'Logout', logout_path(current_user), :method => :delete %>
-<p>Event Host: <strong><%= @user.username %></strong></p>
-
-<h1><%= @event.name %></h1>
-<div class="floor-plan">
-  <% num_of_tables = 6 %>
-  <% seats_per_table = 7 %>
-  <% counter = 1 %>
-  <% num_of_tables.times do %>
-     <div class="tables" id="table-<%= counter %>"></div>
-    <% counter += 1 %>
-  <% end %>
-</div>
-
-<script>
-// var test = d3.select("h1")
-  // .style("background-color", "blue")
-
 var seatsPerTable = <%= seats_per_table %>;
-// console.log(seatsPerTable);
 var rotationFactor = Math.floor(360 / seatsPerTable);
 
 var svg = d3.selectAll('.tables').append('svg')
@@ -68,6 +46,3 @@ for (i = 1; i < seatsPerTable; i++) {
     rotation += rotationFactor;
     currentChair.attr("transform", "rotate(" + rotation + ", " + originX + ", " + originY + ")");
 }
-
-</script>
-
