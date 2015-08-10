@@ -27,6 +27,17 @@ class GuestsController < ApplicationController
   def edit
   end
 
+  def update
+    if request.xhr?
+      guest = Guest.find_by_id(params[:id])
+      guest.attributes = guest_params
+      guest.save
+      render json: guest
+    else
+      redirect_to event
+    end
+  end
+
   def destroy
     if request.xhr?
       guest = Guest.find_by_id(params[:id])

@@ -10,6 +10,8 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = @user.events.where(id: params[:id])[0]
+    puts @event
+    puts @event.tables[0].guests.map(&:first_name)
     update_current_event(@event)
     @guests = @event.guests
     @num_of_tables = @event.tables.length

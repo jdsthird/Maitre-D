@@ -16,17 +16,17 @@ table_number = 1
   table_number += 1
 end
 
-100.times do
+91.times do
   Guest.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, event: event)
 end
 
-Pairing.create!(guest: Guest.find(1), pair: Guest.find(2))
-Pairing.create!(guest: Guest.find(3), pair: Guest.find(4))
-Pairing.create!(guest: Guest.find(5), pair: Guest.find(6))
-Pairing.create!(guest: Guest.find(7), pair: Guest.find(8))
-Pairing.create!(guest: Guest.find(9), pair: Guest.find(10))
-Pairing.create!(guest: Guest.find(11), pair: Guest.find(12))
-Pairing.create!(guest: Guest.find(13), pair: Guest.find(14))
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
 
 
 
