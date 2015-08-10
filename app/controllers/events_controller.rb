@@ -2,16 +2,23 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
+    if request.xhr?
+      render json: @events
+    end
 	end
 
   def show
-   @user = current_user
-   @event = @user.events.where(id: params[:id])[0]
-   update_current_event(@event)
-   @guests = @event.guests
-   @num_of_tables = @event.tables.length
-   @number_of_seats = @event.tables[0].number_of_seats
-   @tables = seat_guests(@event.tables, @guests)
+    @user = current_user
+    @event = @user.events.where(id: params[:id])[0]
+    update_current_event(@event)
+    @guests = @event.guests
+    @num_of_tables = @event.tables.length
+    @number_of_seats = @event.tables[0].number_of_seats
+    @tables = seat_guests(@event.tables, @guests)
+
+    if request.xhr?
+      render json: {tables: @tables, guests: @tables.guests}
+    end
   end
 
   def new
@@ -28,7 +35,11 @@ class EventsController < ApplicationController
       @number +=1
     end
     if @event.save
-      redirect_to @event
+      if request.xhr?
+        render json: @event
+      else
+        redirect_to @event
+      end
     else
       render :new
     end

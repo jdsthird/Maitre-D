@@ -1,8 +1,14 @@
 class GuestsController < ApplicationController
   def index
+    if request.xhr?
+      render json: current_event.guests
+    end
   end
 
   def show
+    if request.xhr?
+      render json: Guest.find_by_id(params[:id])
+    end
   end
 
   def new
@@ -11,13 +17,22 @@ class GuestsController < ApplicationController
   def create
     guest = Guest.create!(guest_params)
     event = guest.event
-    redirect_to event
+    if request.xhr?
+      render json: guest
+    else
+      redirect_to event
+    end
   end
 
   def edit
   end
 
   def destroy
+    if request.xhr?
+      guest = Guest.find_by_id(params[:id])
+      guest.destroy
+      render nothing: true
+    end
   end
 
   private
