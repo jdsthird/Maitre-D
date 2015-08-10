@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/events/:id' => 'events#show'
 
+  resources :guests
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

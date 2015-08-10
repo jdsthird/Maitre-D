@@ -3,6 +3,7 @@
 
 <%= link_to 'Logout', logout_path(current_user), :method => :delete %>
 <p>Event Host: <strong><%= @user.username %></strong></p>
+<%= link_to 'Add Guest', new_guest_path %>
 
 <h1><%= @event.name %></h1>
 <div class="floor-plan">
@@ -10,7 +11,7 @@
   <% seats_per_table = @number_of_seats %>
   <% counter = 1 %>
   <% num_of_tables.times do %>
-     <div class="tables" id="table-<%= counter %>"></div>
+    <svg class="event-table" id="table-<%= counter %>"></div>
     <% counter += 1 %>
   <% end %>
 </div>
