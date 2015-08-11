@@ -6,26 +6,26 @@ feature "Logging in" do
     User.create!(first_name: 'John', last_name: 'Doe', email: 'example@email.com', username: 'exampleuser', password: 'password')
   end
 
-  scenario "Logging in with correct credentials" do
+  scenario "with correct credentials" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => 'exampleuser'
       fill_in 'Password', :with => 'password'
     end
     click_button 'Login'
-    expect(page).to have_content 'My Events'
+    expect(page).to have_content 'Your Events'
   end
 
   given(:other_user) { User.create!(first_name: 'Jane', last_name: 'Doe', email: 'other@example.com', username: 'otheruser', password: 'something') }
 
-  scenario "Logging in as another user" do
+  scenario "with incorrect credentials" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => other_user.username
       fill_in 'Password', :with => other_user.password
     end
     click_button 'Login'
-    expect(page).to have_content 'Invalid username or password'
+    expect(page).to have_content 'these credentials were declined'
   end
 end
 
@@ -34,7 +34,7 @@ feature "Logging out" do
     User.create!(first_name: 'John', last_name: 'Doe', email: 'example@email.com', username: 'exampleuser', password: 'password')
   end
 
-  scenario "Logging out" do
+  scenario "by clicking logout" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => 'exampleuser'
@@ -52,7 +52,7 @@ feature "Signing up" do
   end
 
   scenario "Signing up with unique username" do
-    visit '/signup'
+    visit '/users/new'
     within("#signup-form") do
       fill_in 'First name', with: 'Sally'
       fill_in 'Last name', with: 'Jones'
@@ -61,11 +61,11 @@ feature "Signing up" do
       fill_in 'Password', with: 'password'
     end
     click_button 'Register'
-    expect(page).to have_content 'My Events'
+    expect(page).to have_content 'Your Events'
   end
 
   scenario "Signing up with username that is taken" do
-    visit '/signup'
+    visit '/users/new'
     within("#signup-form") do
       fill_in 'First name', with: 'Sally'
       fill_in 'Last name', with: 'Jones'
@@ -78,7 +78,7 @@ feature "Signing up" do
   end
 
   scenario "Signing up with blank First Name field" do
-    visit '/signup'
+    visit '/users/new'
     within("#signup-form") do
       fill_in 'Username', with: 'exampleuser'
       fill_in 'Password', with: 'password'
