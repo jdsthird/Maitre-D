@@ -1,13 +1,17 @@
-<li>
-	<%= link_to 'Logout', logout_path(current_user), :method => :delete %>
-</li>
-
-<div class="container">
-	<h3>Your Event</h3>
-	<%= link_to "Add an Event", new_event_path %>
+<nav>
+  <div class="logo">LOGO</div>
+  <div class="button" id="new-event"><%= link_to 'Create a New Event', new_event_path %></div>
+  <div class="button" id="logout"><%= link_to 'Logout', logout_path(current_user), :method => :delete %></div>
+</nav>
+<div class="event-index-container">
+  <h1>Welcome, <%= @user.username %></h1>
+	<h3>Your Events</h3>
 	<% @events.each do |event| %>
-		<ul id="event-list">
-			<li><%= link_to("#{event.name}", event) %></li>
-		</ul>
+		<table id="event-list">
+			<tr>
+        <td><%= link_to("#{event.name}", event) %></td>
+        <td><%= link_to 'Delete Event',   method: :delete, data: { confirm: 'Are you quite sure you wish to delete this event?' } %></td>
+      </tr>
+		</table>
 	<% end %>
 </div>
