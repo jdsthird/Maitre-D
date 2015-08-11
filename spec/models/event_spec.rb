@@ -30,4 +30,7 @@ RSpec.describe Event, type: :model do
   describe "edit" do
     let(:event) { Event.create(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now) }
   end
+
+  describe "delete" do
+  end
 end
