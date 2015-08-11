@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
   def new
+    if request.xhr?
+    else
+      render 'new'
+    end
   end
 
 
