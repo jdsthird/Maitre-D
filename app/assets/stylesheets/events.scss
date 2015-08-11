@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.floor-plan {
+.events-show-floor-plan {
   width: 625px;
   height: 625px;
   border: solid 1px gray;
   margin: 0 auto;
 }
 
-h1 {
+h1, p {
   text-align: center;
 }
 
@@ -19,3 +19,25 @@ h1 {
   border: solid 1px gray;
   display: inline-block;
 }
+
+.side-bar-link {
+	display: block;
+}
+
+.event-show-side-bar{
+	float: left;
+	width: 100px;
+}
+
+.event-page-container{
+	position: relative;
+	border: solid 1px gray;
+}
+
+.event-show-container{
+	float: right;
+	margin-left: 75px;
+	display: inline-block;
+}
+
+

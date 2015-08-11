@@ -29,14 +29,8 @@ class EventsController < ApplicationController
   def create
     @user = current_user
     @event = @user.events.new(event_params)
-    # @number = 1
 
     @event.set_tables(params[:event][:table])
-
-    # params[:event][:table][:number].to_i.times do
-    #   Table.create!(number_of_seats: params[:event][:table][:number_of_seats], number: @number, event: @event)
-    #   @number +=1
-    # end
 
     good = @event.save
 
