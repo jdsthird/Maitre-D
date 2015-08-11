@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to "/users/#{@user.id}"
+      redirect_to users_path
     else
       @errors = @user.errors.full_messages
       render 'new'
