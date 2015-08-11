@@ -1,5 +1,11 @@
 <div class="guest-view-container">
-  <div id="full-name">
+  <span id="full-name">
     <%= guest.full_name %>
-  </div>
+  </span>
+  <span id="edit">
+    <%= link_to 'Edit', edit_guest_path(guest) %>
+  </span>
+  <span id="delete">
+    <%= link_to 'Remove', guest_path(guest), method: :delete, confirm: "Are you certain that you wish to exclude this guest from your event?" %>
+  </span>
 </div>

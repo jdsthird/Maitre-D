@@ -3,7 +3,7 @@
   <div class='events-show-container'>
     <div class="events-show-header">
       <h1 class="event-name"><%= @event.name %></h1>
-      <p>Event Host: <strong><%= current_user.username %></strong></p>
+      <div class="event-host">Event Host: <span class="bold"><%= current_user.full_name %></span></div>
     </div>
     <div class="new-guest-container">
       <h3>Add a guest here:</h3>
