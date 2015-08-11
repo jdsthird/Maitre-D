@@ -17,15 +17,16 @@ Rails.application.routes.draw do
   resources :pairings, only: [:index, :create, :destroy]
 
 
-  get 'signup' => 'users#new'
-  post 'users' => 'users#create'
-  get 'users/:id' => 'users#show'
-  get 'users/:id/edit' => 'users#edit'
-  put 'users/:id' => 'users#update'
-  delete 'users/:id' => 'users#destroy'
+  resource :users
+  # get 'signup' => 'users#new'
+  # post 'users' => 'users#create'
+  # get 'users/:id' => 'users#show'
+  # get 'users/:id/edit' => 'users#edit'
+  # put 'users/:id' => 'users#update'
+  # delete 'users/:id' => 'users#destroy'
   # get 'users/:user_id/events/:id' => 'events#show'
 
-  get 'users/:user_id/events/:id' => 'events#show'
+  #get 'users/:user_id/events/:id' => 'events#show'
 
   resources :guests
 

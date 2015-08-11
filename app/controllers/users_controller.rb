@@ -12,10 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to Maitre-DBC!"
       redirect_to users_path
     else
-      @errors = "Your username/password combination is incorrect!"
+      @errors = @user.errors.full_messages
       render 'new'
     end
   end

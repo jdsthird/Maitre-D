@@ -1,22 +1,19 @@
-<div class="all-forms">
-<h4>Please Login</h4>
-<br>
- <%= form_for :session, url: login_path do |f| %>
-    <div class = "input-field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-    <div class = "input-field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  	</div>
-    <%= f.submit "Login"%>
-  <% end %>
-  <p> New User? <%= link_to("Sign up now", signup_path ) %></p>
-
-  <div class = "errors">
-  <% if @errors %>
-    <%= @errors %>
-  <% end %>
+<div class='container'>
+  <div class="all-forms">
+    <h4>Please Login</h4>
+    <%= render partial: "shared/error_box", locals: {errors: @errors}  %>
+    <br>
+    <%= form_for :session, url: login_path do |f| %>
+      <div class = "input-field">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div class = "input-field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <%= f.submit "Login"%>
+    <% end %>
+    <p> New User? <%= link_to("Sign up now", new_users_path ) %></p>
   </div>
 </div>
