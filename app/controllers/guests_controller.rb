@@ -1,7 +1,9 @@
 class GuestsController < ApplicationController
   def index
+    @event = current_event
+    @guests = current_event.guests.order(:last_name)
     if request.xhr?
-      render json: current_event.guests
+      render json: @guests
     end
   end
 
