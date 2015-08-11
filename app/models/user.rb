@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def authenticate(raw_password)
     password == raw_password
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

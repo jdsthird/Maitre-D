@@ -5,7 +5,7 @@
 
 .all-guests-container {
   margin: 20px auto;
-  width: 600px;
+  width: 1000px;
 }
 
 .guest-view-container {
@@ -14,20 +14,27 @@
   font-family: Zapf Chancery, cursive;
 }
 
+#delete a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #520029;
+}
+
 .warning {
   color: red;
 }
 
 .input-field {
   display: inline;
+  font-size: 25px;
 }
 
 #left-column {
-  width: 300px;
+  width: 500px;
   float: left;
 }
 
 #right-column {
-  width: 300px;
+  width: 500px;
   float: right;
 }
