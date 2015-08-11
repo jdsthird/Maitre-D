@@ -36,6 +36,12 @@ h1, p {
 
 .side-bar-link {
 	display: block;
+  color: #E6E6E6;
+  text-decoration: none;
+}
+
+.side-bar-link:hover {
+  color: #FFE5B0;
 }
 
 .event-show-side-bar{
@@ -46,6 +52,13 @@ h1, p {
 .event-page-container{
 	position: relative;
 	border: solid 1px gray;
+}
+
+.event-show-side-bar {
+  background-color: #520029;
+  padding: 10px;
+  height: 100%;
+  position: absolute;
 }
 
 .event-show-container{
