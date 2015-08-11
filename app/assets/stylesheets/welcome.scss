@@ -1,3 +1,52 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.welcome-sign {
+  border: solid 1px gray;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 5em;
+}
+
+#welcome-text {
+  padding-top: 100px;
+  text-align: center;
+  font-size: 100px;
+  font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+    color: black;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
+}
+
+.button-container {
+  width: 205px;
+  margin: 0 auto;
+}
+
+.button {
+  display: inline-block;
+}
+
+.button a {
+  margin: 10px;
+  width: 75px;
+  height: 2em;
+  border: 2px solid #33001A;
+  background-color: #520029;
+  color: #E6E6E6;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2em;
+}
+
+.button a:hover {
+  background-color: #733051;
+}
+
+.form {
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 100px;
+}
