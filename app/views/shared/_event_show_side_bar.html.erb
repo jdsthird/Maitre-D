@@ -1,6 +1,6 @@
 <div class='event-show-side-bar'>
 	<div class='logo'>
-		Logo
+		<%= image_tag "logo.png", id: "side-nav-logo" %>
 	</div>
 	<%= link_to "Event Details", edit_event_path(current_event), class: "side-bar-link" %>
 	<%= link_to "Guest List", guests_path, class: "side-bar-link"  %>
