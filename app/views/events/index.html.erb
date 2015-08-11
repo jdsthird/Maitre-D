@@ -1,6 +1,13 @@
-<p>List of all Events</p>
+<li>
+	<%= link_to 'Logout', logout_path(current_user), :method => :delete %>
+</li>
 
-<% @events.each do |event| %>
-<%= event.name %>
-<% end %>
-circle
+<div class="container">
+	<h3>Your Event</h3>
+	<%= link_to "Add an Event", new_event_path %>
+	<% @events.each do |event| %>
+		<ul id="event-list">
+			<li><%= link_to("#{event.name}", event) %></li>
+		</ul>
+	<% end %>
+</div>
