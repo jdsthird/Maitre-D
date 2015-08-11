@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'events/show'
+  #get 'events/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,8 +16,11 @@ Rails.application.routes.draw do
 
   resources :pairings, only: [:index, :create, :destroy]
 
+  resources :guests
 
-  resource :users
+  resources :tables
+
+  resource :users, only: [:show, :new, :create]
   # get 'signup' => 'users#new'
   # post 'users' => 'users#create'
   # get 'users/:id' => 'users#show'
@@ -28,9 +31,7 @@ Rails.application.routes.draw do
 
   #get 'users/:user_id/events/:id' => 'events#show'
 
-  resources :guests
 
-  resources :tables
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
