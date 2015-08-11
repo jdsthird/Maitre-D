@@ -6,6 +6,7 @@
 	<%= link_to "Guest List", guests_path, class: "side-bar-link"  %>
 	<%= link_to "Requirements", pairings_path, class: "side-bar-link" %>
 	<%= link_to "Seating Chart", event_path(current_event), class: "side-bar-link" %>
+  <%= link_to "Back to My Events", events_path, class: "side-bar-link" %>
 	<%= link_to "Logout", logout_path(current_user), class: "side-bar-link", method: :delete  %>
 </div>
 
