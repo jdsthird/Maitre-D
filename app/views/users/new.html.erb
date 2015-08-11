@@ -1,57 +1,6 @@
 <div class='container'>
-  <div class = "all-forms">
-    <h4>Please Sign Up </h4>
-    <%= render partial: "shared/error_box", locals: {errors: @errors} %>
-    <br>
-    <%= form_for (@user) do |f| %>
-      <div class = "input-field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-      </div>
-      <div class = "input-field">
-        <%=f.label :email, placeholder: "Email" %>
-        <%= f.text_field :email %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :password, placeholder: "Name" %>
-        <%= f.password_field :password %>
-      </div>
-
-      <%= f.submit "Register"%>
-    <% end %>
+  <div class = "all-forms" id="signup-form">
+    <%= render partial: "new_user_form" %>
   </div>
-  <div id="signup-form">
-    <%= form_for (@user) do |f| %>
-      <div class = "input-field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-      </div>
-      <div class = "input-field">
-        <%=f.label :email, placeholder: "Email" %>
-        <%= f.text_field :email %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-      </div>
-      <div class = "input-field">
-        <%= f.label :password, placeholder: "Name" %>
-        <%= f.password_field :password %>
-      </div>
-
-      <%= f.submit "Register"%>
-    <% end %>
-  </div>
+  <p>Already have an account? <%= link_to 'Login here', login_path %>.</p>
 </div>
