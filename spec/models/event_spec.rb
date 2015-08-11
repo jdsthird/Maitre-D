@@ -24,13 +24,21 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "creation" do
-  end
-
   describe "edit" do
     let(:event) { Event.create(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now) }
+
+    it 'changes the values of the event' do
+      event.name = "q"
+      expect(event.name).not_to eq("p")
+    end
   end
 
-  describe "delete" do
+  describe '#destroy' do
+    let(:event) { Event.create(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now) }
+
+    it 'deletes the event' do
+      expect(event).to be_instance_of(Event)
+      expect{event.destroy}.to change{Event.count}.by(-1)
+    end
   end
 end
