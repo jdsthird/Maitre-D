@@ -1,18 +1,16 @@
 
-    <script>
-    bardata = <%= 30.times.map { (20..50).to_a.sample }.to_json %>;
-    </script>
 
-
-
-<li><%= link_to 'Logout', logout_path(current_user), :method => :delete %></li>
+<li>
+	<%= link_to 'Logout', logout_path(current_user), :method => :delete %>
+</li>
 
 <div class="container">
-    <% @events.each do |event| %>
-        <ul id="event-list">
-            <li><%= link_to("#{event.name}", event) %></li>
-        </ul>
-    <% end %>
+	<h3>Your Event</h3>
+	<%= link_to "Add an Event", new_event_path %>
+	<% @events.each do |event| %>
+		<ul id="event-list">
+			<li><%= link_to("#{event.name}", event) %></li>
+		</ul>
+	<% end %>
 </div>
 
-    <%= javascript_include_tag "our-first-d3-chart" %>
