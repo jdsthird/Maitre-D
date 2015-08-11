@@ -6,7 +6,7 @@ feature "Logging in" do
     User.create!(first_name: 'John', last_name: 'Doe', email: 'example@email.com', username: 'exampleuser', password: 'password')
   end
 
-  scenario "Logging in with correct credentials" do
+  scenario "with correct credentials" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => 'exampleuser'
@@ -18,7 +18,7 @@ feature "Logging in" do
 
   given(:other_user) { User.create!(first_name: 'Jane', last_name: 'Doe', email: 'other@example.com', username: 'otheruser', password: 'something') }
 
-  scenario "Logging in as another user" do
+  scenario "as another user" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => other_user.username
@@ -34,7 +34,7 @@ feature "Logging out" do
     User.create!(first_name: 'John', last_name: 'Doe', email: 'example@email.com', username: 'exampleuser', password: 'password')
   end
 
-  scenario "Logging out" do
+  scenario "by clicking logout" do
     visit '/login'
     within("#login-form") do
       fill_in 'Username', :with => 'exampleuser'

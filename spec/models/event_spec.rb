@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
 
-  # let(:event) { Event.new(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now) }
-
   describe "validations" do
     it "must have a name" do
       expect(Event.new(name: "", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now)).to_not be_valid
@@ -24,5 +22,12 @@ RSpec.describe Event, type: :model do
     it "must have a start time" do
       expect(Event.new(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.")).to_not be_valid
     end
+  end
+
+  describe "creation" do
+  end
+
+  describe "edit" do
+    let(:event) { Event.create(name: "p", zip_code: "12345", state: "IL", address_line_one: "123 Elm St.", begins_at: Time.now) }
   end
 end
