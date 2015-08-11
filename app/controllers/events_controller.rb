@@ -14,6 +14,9 @@ class EventsController < ApplicationController
     puts @event.tables[0].guests.map(&:first_name)
     update_current_event(@event)
     @guests = @event.guests
+    @guest_list = @guests.map(&:last_name)
+    p "********"
+    p @guest_list
     @num_of_tables = @event.tables.length
     @number_of_seats = @event.tables[0].number_of_seats
     @tables = seat_guests(@event.tables, @guests)

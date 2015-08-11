@@ -3,6 +3,7 @@
 <%= link_to 'Add Guest', new_guest_path %>
 
 <h1><%= @event.name %></h1>
+
 <div class="floor-plan">
   <% seats_per_table = @number_of_seats %>
   <% counter = 1 %>
@@ -13,8 +14,10 @@
 </div>
 
 <script>
-    var numOfTables = <%= @num_of_tables %>
-    var seatsPerTable = <%= seats_per_table %>
+    var seatsPerTable = <%= seats_per_table %>;
+    var numOfTables = <%= @num_of_tables %>;
+
+
 </script>
 
 <%= javascript_include_tag "event-layout.js" %>
