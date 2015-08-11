@@ -11,8 +11,7 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = @user.events.where(id: params[:id])[0]
-    puts @event
-    puts @event.tables[0].guests.map(&:first_name)
+
     update_current_event(@event)
     @guests = @event.guests
     @num_of_tables = @event.tables.length
@@ -31,19 +30,19 @@ class EventsController < ApplicationController
   def create
     @user = current_user
     @event = @user.events.new(event_params)
-    @number = 1
-    params[:event][:table][:number].to_i.times do
-      p params
-      Table.create!(number_of_seats: params[:event][:table][:number_of_seats], number: @number, event: @event)
-      @number +=1
-    end
-    if @event.save
-      if request.xhr?
-        render json: @event
-      else
-        redirect_to @event
-      end
+
+    @event.set_tables(params[:event][:table])
+
+    good = @event.save
+
+    if good && request.xhr?
+      render json: @event
+    elsif good
+      redirect_to @event
+    elsif request.xhr?
+      render json: @event.errors.full_messages
     else
+      @errors = @event.errors.full_messages
       render :new
     end
 

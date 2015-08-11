@@ -1,15 +1,19 @@
-<%= link_to 'Logout', logout_path(current_user), :method => :delete %>
-<p>Event Host: <strong><%= @user.username %></strong></p>
-<%= link_to 'Add Guest', new_guest_path %>
-
-<h1><%= @event.name %></h1>
-<div class="floor-plan">
-  <% seats_per_table = @number_of_seats %>
-  <% counter = 1 %>
-  <% @num_of_tables.times do %>
-    <svg class="event-table" id="table-<%= counter %>"></svg>
-    <% counter += 1 %>
-  <% end %>
+<div class='events-page-container'>
+	<%= render partial: "shared/event_show_side_bar" %>
+	<div class='events-show-container'>
+		<div class='events-show-header'>
+			<h1><%= @event.name %></h1>
+			<p>Event Host: <strong><%= @user.username %></strong></p>
+		</div>
+		<div class="events-show-floor-plan">
+		  <% seats_per_table = @number_of_seats %>
+		  <% counter = 1 %>
+		  <% @num_of_tables.times do %>
+		    <svg class="event-table" id="table-<%= counter %>"></svg>
+		    <% counter += 1 %>
+		  <% end %>
+		</div>
+	</div>
 </div>
 
 <script>
@@ -18,3 +22,4 @@
 </script>
 
 <%= javascript_include_tag "event-layout.js" %>
+
