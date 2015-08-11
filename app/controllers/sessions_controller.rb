@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to events_path
     else
-      @errors = ["Invalid username/password combination"]
+      @errors = ["I'm sorry, but these credentials were declined. Please try again."]
       render 'new'
     end
   end

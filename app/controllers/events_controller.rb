@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 
 	def index
-		@events = Event.all
+    @user = current_user
+		@events = @user.events
     if request.xhr?
       render json: @events
     end
