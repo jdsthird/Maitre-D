@@ -1,59 +1,7 @@
-<div class="all-forms">
-  <br>
-  <h4>Create Event</h4>
-  <br>
-  <%= form_for @event do |f| %>
-    <div class="input-field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name%>
-    </div>
-  
-   <div class="input-field">
-        <%= f.label "number of tables" %><br>
-        <%= f.fields_for :table do |tf| %>
-        <%=tf.text_field :number %>
-        <% end %>
-    </div>
-    <div class="input-field">
-      <%= f.label "number of seats" %><br>
-        <%= f.fields_for :table do |tf| %>
-        <%=tf.text_field :number_of_seats %>
-        <% end %>
-    </div>
-
-   <div class="input-field">
-        <%= f.label :zip_code %><br>
-        <%= f.text_field :zip_code%>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :state %><br>
-      <%= f.text_field :state%>
-    </div>
-
-      <div class="input-field">
-      <%= f.label :address_line_one %><br>
-      <%= f.text_field :address_line_one%>
-    </div>
- 
-    <div class="input-field">
-      <%= f.label :address_line_two %><br>
-      <%= f.text_field :address_line_two%>
-    </div> 
-
-    <div class="input-field">
-      <%= f.label :begins_at %><br>
-      <%= f.datetime_select :begins_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :end_at %><br>
-      <%= f.datetime_select :begins_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit%>
-    </div>
-  <% end %>
+<div class='events-page-container'>
+  <%= render partial: "shared/event_show_side_bar" %>
+  <div class='events-show-container'>
+    <%= render partial: "event_form", locals: {event: Event.new} %>
+  </div>
 </div>
 

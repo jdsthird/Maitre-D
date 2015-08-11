@@ -1,10 +1,20 @@
 class Table < ActiveRecord::Base
 	has_many :guests
-	belongs_to :event
+  belongs_to :event
 
-	validates_presence_of :number_of_seats
-	validates_presence_of :event
+  validates_presence_of :number_of_seats
+  validates_presence_of :event
 
+
+  ######    Class   #######
+  
+  def self.set_table(seats, table_number, event)
+    Table.create(number_of_seats: seats,
+                 number:          table_number,
+                 event:            event)
+  end
+
+  ######    Instance   #######
   def valid_seating?
     !self.overflowing? && guests_happy?
   end
@@ -18,4 +28,5 @@ class Table < ActiveRecord::Base
       guest.happy?(self.guests)
     end
   end
+
 end
