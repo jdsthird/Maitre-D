@@ -14,9 +14,9 @@ class SeatingChartGenerator
       possibility = table_slices(num_seats, seating_order)
       if slices_valid?(possibility)
         possibility.each_with_index do |table_slice, slice_index|
-          tables[slice_index].guest_ids = table_slice
+          self.tables[slice_index].guest_ids = table_slice
         end
-        return tables
+        return self.tables
       end
     end
     false
@@ -36,8 +36,7 @@ class SeatingChartGenerator
 
   def slice_valid?(slice)
     slice.all? do |guest_id|
-      p missing_pairs = (pairs_hash[:guest_id] - slice)
-      missing_pairs.empty?
+      (pairs_hash[guest_id] - slice).empty?
     end
   end
 
