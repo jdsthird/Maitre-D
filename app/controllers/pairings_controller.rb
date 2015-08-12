@@ -7,7 +7,7 @@ class PairingsController < ApplicationController
 	end
 
 	def create
-		Pairing.generate_pair(pairing_params)
+		Pairing.create(pairing_params)
 	end
 
 

@@ -1,33 +1,31 @@
 class Pairing < ActiveRecord::Base
   belongs_to :guest
   belongs_to :pair, class_name: "Guest"
-  belongs_to :twin, class_name: :Pairing
 
   validates_presence_of :guest
   validates_presence_of :pair
 
+  before_create :check_and_make_pair
 
-  ###########   class   #############
-	def self.generate_pair(prams)
-		pairing = Pairing.create(prams)
-		guest = pairing.guest
-		pair = pairing.pair
-		other_pairing = Pairing.create(guest: pair,
-																	pair: guest, 
-																	twin: pairing)
-		pairing.twin = other_pairing
-		pairing.save
+	def twin
+		@twin ||= Pairing.find_by(guest_id: self.pair_id, pair_id: self.guest_id)
 	end
 
-	#############   instance  ########
-
-
-	def filter_twins(collection)
-		ary = collection
-		i = 0
-	end
+  def filter_symmetric_pairings(pairings) 
+    pairings.map! do |pairing|
+      pairings.delete(pairing.twin)
+      pairing
+    end
+    pairings
+  end
+    
+  end
 
 	private
 
-
+    def check_and_make_pair
+      unless twin
+        Pairing.create(guest_id: self.pair_id, pair_id: self.guest_id)
+      end
+    end
 end

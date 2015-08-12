@@ -21,13 +21,13 @@ end
   Guest.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, event: event)
 end
 
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
-Pairing.generate_pair(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
+Pairing.create!(guest: Guest.all.sample, pair: Guest.all.sample)
 
 
 
