@@ -7,6 +7,7 @@ class Pairing < ActiveRecord::Base
   validates_presence_of :pair
 
 
+  ###########   class   #############
 	def self.generate_pair(prams)
 		pairing = Pairing.create(prams)
 		guest = pairing.guest
@@ -17,5 +18,16 @@ class Pairing < ActiveRecord::Base
 		pairing.twin = other_pairing
 		pairing.save
 	end
+
+	#############   instance  ########
+
+
+	def filter_twins(collection)
+		ary = collection
+		i = 0
+	end
+
+	private
+
 
 end
