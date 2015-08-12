@@ -1,5 +1,3 @@
-// var test = d3.select("h1")
-  // .style("background-color", "blue")
 
 
 
@@ -51,7 +49,6 @@ guestList.fetch({success: function(){
         $(this).parent().parent().parent().find("span").html(
           $(this).attr("data")
         );
-        // $(this).parent().parent().find( "span").text("eagle")
       }, function() {
         $(this).parent().parent().parent().find("span").html("");
       })
