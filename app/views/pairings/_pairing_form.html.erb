@@ -1,0 +1,20 @@
+<div class='all-forms' id='pairing-form'>
+	<h4>Add Requirement</h4>
+	<%= render partial: "shared/error_box", locals: {errors: errors} %>
+	<br>
+	<form method='post' action='/pairings'>
+		<input name="authenticity_token" type="hidden" value="token_value">
+		<label>who</label>
+		<select name='guest_list[guest]'>
+			<% guest_list.each do |guest| %>
+				<option value=<%= guest.id%>><%= guest.full_name %></option>
+			<% end %>
+		</select>
+		<label>with whom</label>
+		<select name='guest_list[pair]'>
+			<% guest_list.each do |guest| %>
+				<option value=<%= guest.id%>><%= guest.full_name %></option>
+			<% end %>
+		</select>
+	</form>
+</div>

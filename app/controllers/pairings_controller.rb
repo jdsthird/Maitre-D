@@ -1,22 +1,23 @@
 class PairingsController < ApplicationController
 
 	def index
-		@guestList = current_event.guests
+		# this needs a filter so the twin pairs only appear once
+		@pairings = current_event.pairings.includes(:guest, :pair)
+		@guests = current_event.guests
 	end
 
 	def create
-		pairing = Pairing.new(pairing_params)
-		guest = pairing.guest
-		pair = pairing.pair
-		other_pairing = Pairing.new(guest: pair,
-																pair: guest)
-		pairing.save && other_pairing.save
-		
-		
+		Pairing.generate_pair(pairing_params)
 	end
 
-	def destroy
 
+	def destroy
+		p1 = Pairing.find_by_id(params[:id])
+		p2 = p1.twin
+		p1.destroy
+		p2.destroy
+
+		redirect_to pairings_path
 	end
 
 	private
