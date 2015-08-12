@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-color: linen;
+}
+
 .welcome-sign {
   border: solid 1px gray;
   width: 75%;
@@ -31,7 +35,7 @@
   height: 2em;
   border: 2px solid #33001A;
   background-color: #520029;
-  color: #E6E6E6;
+  color: linen;
   text-decoration: none;
   display: inline-block;
   text-align: center;

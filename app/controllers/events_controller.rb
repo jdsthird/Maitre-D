@@ -45,7 +45,13 @@ class EventsController < ApplicationController
       @errors = @event.errors.full_messages
       render :new
     end
+  end
 
+  def destroy
+    @user = current_user
+    @event = @user.events.where(id: params[:id])[0]
+    @event.destroy
+    redirect_to events_path
   end
 
 

@@ -8,13 +8,13 @@
   <div class="events-index-container">
   	<h3>Your Events</h3>
     <div id="events-calendar"></div>
-  	<% @events.each do |event| %>
-  		<table id="event-list">
+  	<table id="event-list">
+      <% @events.each do |event| %>
   			<tr>
           <td><%= link_to("#{event.name}", event) %></td>
-          <td><%= link_to 'Delete Event', event_path(event), method: :delete, confirm: 'Are you quite sure you wish to delete this event?' %></td>
+          <td><%= link_to 'Delete Event', event_path(event), method: :delete, data: {confirm: 'Are you quite sure you wish to delete this event?'} %></td>
         </tr>
-  		</table>
-  	<% end %>
+  	  <% end %>
+    </table>
   </div>
 </div>
