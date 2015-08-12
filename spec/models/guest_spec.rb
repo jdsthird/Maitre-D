@@ -23,7 +23,7 @@ RSpec.describe Guest, type: :model do
 
     it "returns false when a pair is missing" do
       guest.pairs << Guest.create!(first_name: "pair", event: event)
-      expect(guest.happy?(guests)).to be false
+      expect(guest.happy?(guests.map(&:id))).to be false
     end
 
     it "returns true otherwise" do
@@ -31,7 +31,7 @@ RSpec.describe Guest, type: :model do
       guest.pairs << pair
       guests << pair
       # guest_ids = guests.map { |guest| guest.id }
-      expect(guest.happy?(guests)).to be true
+      expect(guest.happy?(guests.map(&:id))).to be true
     end
   end
 end
