@@ -2,6 +2,7 @@ class GuestsController < ApplicationController
   def index
     @event = current_event
     @guests = current_event.guests.order(:last_name)
+    @guest = Guest.new
     if request.xhr?
       render json: @guests
     end
@@ -13,20 +14,21 @@ class GuestsController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def create
     guest = Guest.create!(guest_params)
     event = guest.event
     if request.xhr?
       render json: guest
     else
-      redirect_to event
+      redirect_to guests_path
     end
   end
 
   def edit
+    @event = current_event
+    @guests = current_event.guests.order(:last_name)
+    @guest = Guest.find_by_id(params[:id])
+    render "index"
   end
 
   def update
@@ -36,15 +38,18 @@ class GuestsController < ApplicationController
       guest.save
       render json: guest
     else
-      redirect_to event
+      redirect_to guests_path
     end
   end
 
   def destroy
+    guest = Guest.find_by_id(params[:id])
+    guest.destroy
+
     if request.xhr?
-      guest = Guest.find_by_id(params[:id])
-      guest.destroy
       render nothing: true
+    else
+      redirect_to guests_path
     end
   end
 
