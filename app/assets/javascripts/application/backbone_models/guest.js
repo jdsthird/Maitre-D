@@ -12,12 +12,7 @@ var Guests = Backbone.Collection.extend({
     })
   },
 
-  findFarthestTable: function(){
-    return this.eventTableIds().length
-  },
-
   eventTableIds: function(){
-    // returns an array of qall the table_ids of the guests
     return this.models.map(function(model){ 
       return model.get("table_id");
     }).filter(function(v, i, s){ 
