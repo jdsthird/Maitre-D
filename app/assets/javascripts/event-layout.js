@@ -54,5 +54,6 @@ guestList.fetch({success: function(){
           $( this ).find( "span:last" ).remove();
         })
 
+
 }});
 
