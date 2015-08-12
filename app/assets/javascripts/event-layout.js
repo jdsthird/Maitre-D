@@ -1,7 +1,8 @@
 // var test = d3.select("h1")
   // .style("background-color", "blue")
 
-var rotationFactor = Math.floor(360 / seatsPerTable);
+
+
 var guestList = new Guests();
 guestList.fetch({success: function(){
 
@@ -26,6 +27,7 @@ guestList.fetch({success: function(){
     });
 
     var tableOne = guestList.tableSelector(table_id);
+    var rotationFactor = Math.floor(360 / tableOne.length);
 
     for(var ii =0; ii < tableOne.length; ii++){
       var currentChair = group.append("rect").attr({
