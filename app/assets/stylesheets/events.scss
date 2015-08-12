@@ -28,19 +28,23 @@ p {
 // Events Index
 
 .events-index-nav {
-  overflow: auto;
-  width: 100%;
+  margin: -10px;
   height: 106px;
   background-color: #520029;
 }
 
 .events-index-nav .button {
   float: right;
-  margin-top: 20px;
+  font-size: 20px;
+  margin: 20px 30px 0px 0px;
 }
 
 #new-event a {
-  width: 165px;
+  width: 200px;
+}
+
+#logout a {
+  width: 110px;
 }
 
 .events-index-container {
