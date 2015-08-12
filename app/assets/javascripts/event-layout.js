@@ -23,7 +23,7 @@ guestList.fetch({success: function(){
       cx: originX,
       cy: originY,
       r: tableRadius,
-      fill: "#595AB7"
+      fill: "#520029"
     });
 
     var tableOne = guestList.tableSelector(table_id);
