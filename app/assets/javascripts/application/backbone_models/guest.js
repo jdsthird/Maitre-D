@@ -6,13 +6,26 @@ var Guest = Backbone.Model.extend({
 var Guests = Backbone.Collection.extend({
   url: "/guests",
   model: Guest,
-  tableSelector: function(tableNumber){
+  tableSelector: function(table_id){
     return this.models.filter(function(model){
-      return (tableNumber === model.get("table_id"));
+      return (table_id === model.get("table_id"));
     })
   },
+
   findFarthestTable: function(){
-    var ids = this.models.map(function(guest){ return guest.get("table_id") });
-    return Math.max.apply(Math, ids);
+    return this.eventTableIds().length
+  },
+
+  eventTableIds: function(){
+    // returns an array of qall the table_ids of the guests
+    return this.models.map(function(model){ 
+      return model.get("table_id");
+    }).filter(function(v, i, s){ 
+      return s.indexOf(v) === i;
+    });
   }
 });
+
+
+
+
