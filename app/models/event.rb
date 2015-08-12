@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :host, class_name: :"User"
   has_many :tables
   has_many :guests
+  has_many :pairings, through: :guests
 
 
   validates_presence_of :name

@@ -1,0 +1,5 @@
+<% pairings.each do |pairing| %>
+	<div class='pairing-view-container'>
+		<p><%= pairing.guest.full_name %> & <%= pairing.pair.full_name %> ~<%= link_to "Remove", pairing_path(pairing), method: :delete %></p>
+	</div>
+<% end %>
