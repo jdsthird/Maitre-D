@@ -53,7 +53,7 @@ ev.guests.each do |baddie|
 end
 
 20.times do
-	Pairing.generate_pair(guest: the_gang.pop, pair: the_gang.pop)
+	Pairing.create!(guest: the_gang.pop, pair: the_gang.pop)
 end
 
 
