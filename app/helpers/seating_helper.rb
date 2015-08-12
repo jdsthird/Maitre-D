@@ -57,4 +57,8 @@ module SeatingHelper
       table.valid_seating?
     end
   end
+
+  def check_sufficient_seating(tables, guests)
+    tables.reduce{}
+  end
 end
