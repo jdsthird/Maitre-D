@@ -10,12 +10,13 @@ class EventsController < ApplicationController
 
   def show
     @user = current_user
-    @event = @user.events.where(id: params[:id])[0]
+    @event = @user.events.where(id: params[:id]).first
 
     update_current_event(@event)
     @guests = @event.guests
     @num_of_tables = @event.tables.length
-    @number_of_seats = @event.tables[0].number_of_seats
+    @number_of_seats = @event.tables.first.number_of_seats
+
     @tables = seat_guests(@event.tables, @guests)
 
     if request.xhr?

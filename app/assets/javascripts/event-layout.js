@@ -1,15 +1,15 @@
 // var test = d3.select("h1")
   // .style("background-color", "blue")
 
-var rotationFactor = Math.floor(360 / seatsPerTable);
+
+
 var guestList = new Guests();
 guestList.fetch({success: function(){
-  // var allGuestlist = guestList.map(function(guest){return guest.fullName()});
-  // here we will eventually want to split on table
-  for(var i =0; i < guestList.findFarthestTable(); i++){
-    console.log(guestList.findFarthestTable());
+
+  guestList.eventTableIds().forEach(function(table_id, i){
+
     var group = d3.select('#table-' + (i+1) ).append('g')
-    console.log(i)
+
     var originX = 75;
     var originY = 75;
     var tableRadius = 40;
@@ -26,8 +26,9 @@ guestList.fetch({success: function(){
       fill: "#595AB7"
     });
 
-    var tableOne = guestList.tableSelector(i+1);
-    // var tableGuests = tableOne.map(function(guest){ return guest.fullName() });
+    var tableOne = guestList.tableSelector(table_id);
+    var rotationFactor = Math.floor(360 / tableOne.length);
+
     for(var ii =0; ii < tableOne.length; ii++){
       var currentChair = group.append("rect").attr({
         x: chairOriginX - (chairWidth / 2),
@@ -41,6 +42,6 @@ guestList.fetch({success: function(){
       });
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
     }
-  }
+  });
 }});
 
