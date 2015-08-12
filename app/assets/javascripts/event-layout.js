@@ -40,7 +40,7 @@ guestList.fetch({success: function(){
         stroke: "#C61C6F",
         data: tableOne[ii].fullName(),
         class: 'chair'
-
+        
       });
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
     }
@@ -49,7 +49,7 @@ guestList.fetch({success: function(){
      $('.chair').hover(
      function(){
       console.log($(this).attr('data'))
-          $( this ).append('<span>'+ $(this).attr('data')+ '</span>');
+          $( this ).append('<span>'+ $(this).attr('data')+ '</span>').text();
         }, function() {
           $( this ).find( "span:last" ).remove();
         })
