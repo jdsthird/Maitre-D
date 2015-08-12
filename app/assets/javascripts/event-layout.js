@@ -38,10 +38,21 @@ guestList.fetch({success: function(){
         height: chairWidth,
         fill: "black",
         stroke: "#C61C6F",
-        data: tableOne[ii].fullName()
+        data: tableOne[ii].fullName(),
+        class: 'chair'
+
       });
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
     }
   });
+  
+     $('.chair').hover(
+     function(){
+      console.log($(this).attr('data'))
+          $( this ).append('<span>'+ $(this).attr('data')+ '</span>');
+        }, function() {
+          $( this ).find( "span:last" ).remove();
+        })
+
 }});
 
