@@ -9,7 +9,12 @@
 		  <% seats_per_table = @number_of_seats %>
 		  <% counter = 1 %>
 		  <% @num_of_tables.times do %>
-		    <svg class="event-table" id="table-<%= counter %>"></svg>
+		  	<div id='table-<%= counter%>-namebox' class='table-namebox'>
+			  	<span class='name-box'>Falcon</span>
+			    <svg class="event-table" id="table-<%= counter %>">
+			    	
+			    </svg>
+		    </div>
 		    <% counter += 1 %>
 		  <% end %>
 		</div>

@@ -47,12 +47,14 @@ guestList.fetch({success: function(){
   });
   
      $('.chair').hover(
-     function(){
-      console.log($(this).attr('data'))
-          $( this ).append('<span>'+ $(this).attr('data')+ '</span>').text();
-        }, function() {
-          $( this ).find( "span:last" ).remove();
-        })
+      function(){
+        $(this).parent().parent().parent().find("span").html(
+          $(this).attr("data")
+        );
+        // $(this).parent().parent().find( "span").text("eagle")
+      }, function() {
+        $(this).parent().parent().parent().find("span").html("");
+      })
 
 }});
 
