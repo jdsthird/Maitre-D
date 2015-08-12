@@ -1,0 +1,22 @@
+<div class='events-page-container'>
+	<%= render partial: "shared/event_show_side_bar" %>
+	<div class='events-show-container'>
+    <%= render partial: "shared/event_show_header", locals: {event: current_event, user: current_user} %>
+		<div class='new-pairing-container'>
+			<h3>Please note who needs to be seated with whom</h3>
+			<br>
+			<%= render partial: "pairing_form", locals: {guests: @guests, errors: @errors} %> 
+		</div>
+
+		<div class='all-pairing-container'>
+			<div id='left-column'>
+				<%= render partial: "pairings", locals: {pairings: @pairings[0...(@pairings.length / 2)]} %>
+			</div>
+			<div id='right-column'>
+				<%= render partial: "pairings", locals: {pairings: @pairings[(@pairings.length / 2)..-1]} %>
+			</div>
+		</div>
+
+		</div>
+	</div>
+</div>
