@@ -38,7 +38,7 @@ class GuestsController < ApplicationController
       guest.save
       render json: guest
     else
-      redirect_to guest
+      redirect_to guests_path
     end
   end
 
@@ -49,7 +49,7 @@ class GuestsController < ApplicationController
     if request.xhr?
       render nothing: true
     else
-      redirect_to guest
+      redirect_to guests_path
     end
   end
 
