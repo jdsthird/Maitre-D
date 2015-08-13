@@ -23,11 +23,6 @@ $(document).ready(function() {
     });
   });
 
-  // $(".form").find("#login-form").on("submit", "form", function(event) {
-  //   event.preventDefault();
-  //   console.log("listening");
-  // });
-
   $(".form").on("submit", "form", function(event) {
     event.preventDefault();
     console.log($(this).attr("action"));
@@ -44,6 +39,7 @@ $(document).ready(function() {
     });
 
     request.fail(function(response) {
+      console.log(response);
       $(".form").html(response.responseText);
     });
   });

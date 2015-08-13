@@ -7,13 +7,25 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if request.xhr?
+      render partial: "shared/signup_form", locals: {errors: @errors}
+    else
+      render 'new'
+    end
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    successful_creation = @user.save
+    if successful_creation && request.xhr?
       log_in @user
       redirect_to users_path
+    elsif successful_creation
+      log_in @user
+      redirect_to users_path
+    elsif request.xhr?
+      @errors = @user.errors.full_messages
+      render partial: "shared/signup_form", statusCode: 422, locals: {errors: @errors}
     else
       @errors = @user.errors.full_messages
       render 'new'
