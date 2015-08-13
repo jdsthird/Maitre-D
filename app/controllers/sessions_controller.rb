@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       redirect_to events_path
     elsif request.xhr?
       @errors = ["I'm sorry, but these credentials were declined. Please try again."]
-      render partial: "shared/login_form", status: 422, locals: {errors: @errors}
+      render partial: "shared/login_form", statusCode: 422, locals: {errors: @errors}
     else
       @errors = ["I'm sorry, but these credentials were declined. Please try again."]
       render 'new'

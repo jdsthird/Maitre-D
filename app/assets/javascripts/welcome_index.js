@@ -23,24 +23,29 @@ $(document).ready(function() {
     });
   });
 
-//   $(".form").on("submit", "form", function(event) {
-//     event.preventDefault();
+  // $(".form").find("#login-form").on("submit", "form", function(event) {
+  //   event.preventDefault();
+  //   console.log("listening");
+  // });
 
-//     var request = $.ajax({
-//       url: "/login",
-//       method: "POST",
-//       data: $(this).serialize(),
-//       dataType: "json"
-//     });
+  $(".form").on("submit", "form", function(event) {
+    event.preventDefault();
 
-//     request.success(function() {
+    var request = $.ajax({
+      url: "/login",
+      method: "POST",
+      data: $(this).serialize(),
+      dataType: "json"
+    });
 
-//     });
+    request.success(function(response) {
+      if(!response.errors) location.href = "/events"
+    });
 
-//     request.fail(function(response) {
-//       $(".form").html(response.responseText);
-//     });
-//   });
+    request.fail(function(response) {
+      $(".form").html(response.responseText);
+    });
+  });
 
   $("#signup").on("click", function(event) {
     event.preventDefault();
