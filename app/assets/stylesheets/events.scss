@@ -71,6 +71,16 @@ p {
 
 // Event Show
 
+.table-namebox{
+  position: relative; 
+}
+
+.name-box{
+  position: absolute;
+  left: 5px;
+  top: 0;
+}
+
 .event-page-container{
   margin: -10px;
 }

@@ -1,5 +1,3 @@
-// var test = d3.select("h1")
-  // .style("background-color", "blue")
 
 
 
@@ -39,7 +37,8 @@ guestList.fetch({success: function(){
         fill: "black",
         stroke: "#C61C6F",
         data: tableOne[ii].fullName(),
-        class: 'chair'
+        class: 'chair',
+        id: tableOne[ii].id
         
       });
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
@@ -47,12 +46,19 @@ guestList.fetch({success: function(){
   });
   
      $('.chair').hover(
-     function(){
-      console.log($(this).attr('data'))
-          $( this ).append('<span>'+ $(this).attr('data')+ '</span>').text();
-        }, function() {
-          $( this ).find( "span:last" ).remove();
-        })
+      function(){
+        $(this).parent().parent().parent().find("span").html(
+          $(this).attr("data")
+        );
+      }, function() {
+        $(this).parent().parent().parent().find("span").html("");
+      })
+
+     $('.listed-guest').hover(
+        function(){
+
+        }, 
+     )
 
 }});
 
