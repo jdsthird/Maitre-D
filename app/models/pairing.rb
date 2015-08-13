@@ -2,12 +2,12 @@ class Pairing < ActiveRecord::Base
   belongs_to :guest
   belongs_to :pair, class_name: "Guest"
 
-  validates_presence_of :guest
-  validates_presence_of :pair
+  validates_presence_of :guest, message: "-- Please select a first guest."
+  validates_presence_of :pair, message: "-- Please select a second guest."
 
   after_create :check_and_make_pair
 
-	def self.filter_symmetric_pairings(pairings) 
+	def self.filter_symmetric_pairings(pairings)
     pairings.map! do |pairing|
       pairings.delete(pairing.twin)
       pairing
