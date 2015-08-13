@@ -12,7 +12,11 @@
 /*option {
   font-size: 1.5em;
 }*/
-
+.event-host {
+  text-align: center;
+  font-size: 1.4em;
+  font-family: 'Great Vibes', Helvetica, sans-serif;
+}
 .all-guests-container {
   margin: 20px auto;
   width: 1000px;
