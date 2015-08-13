@@ -4,7 +4,6 @@
 		<div class='event-show-header'>
 			<h1 id="event-name"><%= @event.name %></h1>
 			<p id="event-host">Event Host: <strong><%= @user.username %></strong></p>
-			<p><%= link_to("Update Seating Chart", "/seating/events/#{@event.id}") %></p>
 		</div>
 		<div class="event-show-floor-plan">
 		  <% seats_per_table = @number_of_seats %>
