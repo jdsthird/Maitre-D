@@ -13,11 +13,13 @@ class EventsController < ApplicationController
     @event = @user.events.where(id: params[:id]).first
 
     update_current_event(@event)
+    @tables = @event.tables
     @guests = @event.guests
+    unless guests_seated?(@guests)
+      seat_guests(@tables, @guests)
+    end
     @num_of_tables = @event.tables.length
     @number_of_seats = @event.tables.first.number_of_seats
-
-    @tables = seat_guests(@event.tables, @guests)
 
     if request.xhr?
       render json: {tables: @tables, guests: @tables.guests}

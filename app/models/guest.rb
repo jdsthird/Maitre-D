@@ -7,8 +7,8 @@ class Guest < ActiveRecord::Base
   validates_presence_of :event
   validates_presence_of :first_name
 
-  def happy?(guests)
-    self.pairs.all? { |pair| guests.include?(pair) }
+  def happy?(guest_ids)
+    self.pair_ids.all? { |pair_id| guest_ids.include?(pair_id) }
   end
 
   def full_name
