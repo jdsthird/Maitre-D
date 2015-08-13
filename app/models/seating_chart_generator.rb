@@ -31,7 +31,11 @@ class SeatingChartGenerator
   private
     def isolate_collections
       collections = []
-      self.guests.each do |guest|
+      prioritized_guests = self.guests.sort do |a,b|
+        b.pair_ids.length <=> a.pair_ids.length
+      end
+      p prioritized_guests.map{|g| g.pair_ids.length}
+      prioritized_guests.each do |guest|
         added = false
         collections.each do |collection|
           unless (guest.pair_ids & collection).empty?
