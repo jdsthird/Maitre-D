@@ -49,24 +49,24 @@ RSpec.describe SeatingChartGenerator, type: :model do
   end
 
   describe "#table_slices" do
-    it "returns an array of arrays" do
+    xit "returns an array of arrays" do
       expect(scg.table_slices(table.number_of_seats, guests)).to all(be_an Array)
     end
 
-    it "correctly maps guests to tables" do
+    xit "correctly maps guests to tables" do
       assignments = scg.table_slices(table.number_of_seats, (guests + [guest]).map(&:id))
       expect(assignments.first).to eq guests.map(&:id)
     end
   end
 
   describe "#slices_valid?" do
-    it "returns false if any slice is not valid" do
+    xit "returns false if any slice is not valid" do
       guests.first.pairs << guest
       slices = [[guests.map(&:id)], [guest.id]]
       expect(scg.slices_valid?(slices)).to be false
     end
 
-    it "returns true when all tables are valid" do
+    xit "returns true when all tables are valid" do
       slices = [[guests.map(&:id)], [guest.id]]
       expect(scg.slices_valid?(slices)).to be true
     end

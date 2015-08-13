@@ -1,51 +1,47 @@
 class SeatingChartGenerator
-  attr_accessor :tables, :num_seats, :pairs_hash
+  attr_accessor :tables, :guests, :num_seats, :collections
 
   def initialize(args)
     @tables = args[:tables]
     @guests = args[:guests]
     @num_seats = @tables.first.number_of_seats
-    @pairs_hash = generate_pairs_hash(args[:guests])
+    @collections = isolate_collections
   end
 
   def make_seating_chart
-    guest_ids = self.pairs_hash.keys
-    guest_ids.permutation.each do |seating_order|
-      possibility = table_slices(num_seats, seating_order)
-      if slices_valid?(possibility)
-        possibility.each_with_index do |table_slice, slice_index|
-          self.tables[slice_index].guest_ids = table_slice
+    slices = []
+    collections.each do |collection|
+      added = false
+      slices.length.times do |slice_index|
+        if slices[slice_index].length + collection.length <= self.num_seats
+          slices[slice_index] += collection
+          added = true
+          break
         end
-        return self.tables
       end
+      slices << collection unless added
     end
-    false
-  end
-
-  # map guests to tables based upon generated permutations
-  def table_slices(num_seats, guest_ids)
-    guest_ids.each_slice(num_seats).to_a
-  end
-
-  # run a method on each table to ensure it meets the requirements
-  def slices_valid?(slice_array)
-    slice_array.all? do |slice|
-      slice_valid?(slice)
+    slices.each_with_index do |slice, index|
+      self.tables[index].guest_ids = slice
     end
+    self.tables
   end
 
-  def slice_valid?(slice)
-    slice.all? do |guest_id|
-      (pairs_hash[guest_id] - slice).empty?
-    end
-  end
-
+  
   private
-    def generate_pairs_hash(guests)
-      output = Hash.new([])
-      guests.each do |guest|
-        output[guest.id] = guest.pair_ids
+    def isolate_collections
+      collections = []
+      self.guests.each do |guest|
+        added = false
+        collections.each do |collection|
+          unless (guest.pair_ids & collection).empty?
+            collection << guest.id
+            added = true
+            break
+          end
+        end
+        collections << [guest.id] unless added
       end
-      output
+      collections.sort { |a,b| b.length <=> a.length }
     end
 end
