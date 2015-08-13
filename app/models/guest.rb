@@ -5,7 +5,7 @@ class Guest < ActiveRecord::Base
   has_many :pairs, through: :pairings
 
   validates_presence_of :event
-  validates_presence_of :first_name
+  validates_presence_of :first_name, message: "-- We require at least a first name for each guest."
 
   def happy?(guest_ids)
     self.pair_ids.all? { |pair_id| guest_ids.include?(pair_id) }

@@ -6,12 +6,14 @@
 		<input name="authenticity_token" type="hidden" value="token_value">
 		<label>who</label>
 		<select name='pairing[guest_id]'>
+				<option></option>
 			<% guests.each do |guest| %>
 				<option value=<%= guest.id%>><%= guest.full_name %></option>
 			<% end %>
 		</select>
 		<label>with whom</label>
 		<select name='pairing[pair_id]'>
+				<option></option>
 			<% guests.each do |guest| %>
 				<option value=<%= guest.id%>><%= guest.full_name %></option>
 			<% end %>
