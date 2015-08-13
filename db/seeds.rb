@@ -68,7 +68,7 @@ event = Event.create!(name: "DBC Graduation", zip_code: "60654", state: "IL", ad
 john =  Guest.create!(first_name: "John", last_name: "Sternberg", event: event)
 kilima =  Guest.create!(first_name: "Kilima", last_name: "Glenn", event: event)
 edwin = Guest.create!(first_name: "Edwin", last_name: "Steinmetz", event: event)
-tine = Guest.create!(first_name: "'Tine'", last_name: "Onayemi", event: event)
+tine = Guest.create!(first_name: "'Tine", last_name: "Onayemi", event: event)
 ben = Guest.create!(first_name: "Ben", last_name: "DiPaola", event: event)
 fu = Guest.create!(first_name: "Brian", last_name: "Fu", event: event)
 christine = Guest.create!(first_name: "Christine", last_name: "Hager", event: event)
@@ -396,6 +396,6 @@ Pairing.create!(guest: lesley, pair: joffrey)
 
 
 
-guests.length.times do |i|
-  Table.create!(event: event, number: i, number_of_seats: 10)
+16.times do |i|
+  Table.create!(event: event, number: i, number_of_seats: 12)
 end
