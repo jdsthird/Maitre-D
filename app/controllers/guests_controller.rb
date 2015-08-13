@@ -28,14 +28,16 @@ class GuestsController < ApplicationController
     @event = current_event
     @guests = current_event.guests.order(:last_name)
     @guest = Guest.find_by_id(params[:id])
+    @edit = true
     render "index"
   end
 
   def update
+    guest = Guest.find_by_id(params[:id])
+    guest.attributes = guest_params
+    guest.save
+    
     if request.xhr?
-      guest = Guest.find_by_id(params[:id])
-      guest.attributes = guest_params
-      guest.save
       render json: guest
     else
       redirect_to guests_path

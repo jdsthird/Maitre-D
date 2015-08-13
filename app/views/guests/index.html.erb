@@ -6,7 +6,11 @@
       <h3>Add a guest here:</h3>
       <p class="warning">Will our illustrious host be attending the event? If so, be sure to add yourself to the guest list.</p>
       <br>
-      <%= render partial: "guests/new", locals: {guest: @guest} %>
+      <% if @edit %>
+        <%= render partial: "guests/edit", locals: {guest: @guest} %>
+      <% else %>
+        <%= render partial: "guests/new", locals: {guest: @guest} %>
+      <% end %>
     </div>
     
     <div class="all-guests-container">
