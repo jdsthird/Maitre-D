@@ -30,9 +30,10 @@ $(document).ready(function() {
 
   $(".form").on("submit", "form", function(event) {
     event.preventDefault();
+    console.log($(this).attr("action"));
 
     var request = $.ajax({
-      url: "/login",
+      url: $(this).attr("action"),
       method: "POST",
       data: $(this).serialize(),
       dataType: "json"
