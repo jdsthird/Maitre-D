@@ -4,7 +4,7 @@ class PairingsController < ApplicationController
 		# this needs a filter so the twin pairs only appear once
 		@pairings = current_event.pairings.includes(:guest, :pair)
 		@pairings = Pairing.filter_symmetric_pairings(@pairings.to_a)
-		@guests = current_event.guests
+		@guests = current_event.guests.order("last_name")
 	end
 
 	def create
