@@ -50,15 +50,10 @@ guestList.fetch({success: function(){
         $(this).parent().parent().parent().find("span").html(
           $(this).attr("data")
         );
+
       }, function() {
         $(this).parent().parent().parent().find("span").html("");
-      })
-
-     $('.listed-guest').hover(
-        function(){
-
-        }, 
-     )
+      });
 
 }});
 
