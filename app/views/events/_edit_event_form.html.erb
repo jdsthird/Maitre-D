@@ -1,0 +1,58 @@
+<div class="all-forms" id="event-form">
+  <h4>Create Event</h4>
+  <%= render partial: "shared/error_box", locals: {errors: errors} %>
+  <br>
+  <%= form_for event, url: event, method: :put do |f| %>
+    <div class="input-field">
+      <%= f.label :name %>
+      <%= f.text_field :name%><br>
+    </div>
+
+   <div class="input-field">
+        <%= f.label "number of tables" %>
+        <%= f.fields_for :table do |tf| %>
+        <%=tf.text_field :number %><br>
+        <% end %>
+    </div>
+    <div class="input-field">
+      <%= f.label "seats per table" %>
+        <%= f.fields_for :table do |tf| %>
+        <%=tf.text_field :number_of_seats %><br>
+        <% end %>
+    </div>
+
+      <div class="input-field">
+      <%= f.label :address_line_one %>
+      <%= f.text_field :address_line_one%><br>
+    </div>
+
+    <div class="input-field">
+      <%= f.label :address_line_two %>
+      <%= f.text_field :address_line_two%><br>
+    </div>
+
+    <div class="input-field">
+      <%= f.label :state %>
+      <%= f.text_field :state%><br>
+    </div>
+
+    <div class="input-field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code%><br>
+    </div>
+
+    <div class="input-field">
+      <%= f.label :begins_at %>
+      <%= f.datetime_select :begins_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %><br>
+    </div>
+
+    <div class="input-field">
+      <%= f.label :ends_at %>
+      <%= f.datetime_select :ends_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %><br><br>
+    </div>
+
+    <div class="actions">
+      <%= f.submit%>
+    </div>
+  <% end %>
+</div>
