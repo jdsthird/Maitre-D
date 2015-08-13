@@ -3,7 +3,7 @@
     <%= render partial: "shared/event_show_side_bar" %>
   <% end %>
   <div class='events-show-container'>
-    <%= render partial: "event_form", locals: {event: Event.new} %>
+    <%= render partial: "new_event_form", locals: {event: @event, errors: @errors} %>
   </div>
 </div>
 
