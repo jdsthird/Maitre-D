@@ -60,5 +60,6 @@ guestList.fetch({success: function(){
         }, 
      )
 
+
 }});
 

@@ -32,6 +32,12 @@ p {
   height: 106px;
   background-color: #520029;
 }
+#left {
+    background-color: #520029;
+    position: absolute; 
+    width: 210px;
+    height: 100%;
+}
 
 .events-index-nav .button {
   float: right;
@@ -82,16 +88,13 @@ p {
 }
 
 .event-page-container{
-  margin: -10px;
+  position: relative;
 }
 
 .event-show-side-bar {
-  float: left;
-  background-color: #520029;
-  padding: 10px;
-  width: 210px;
   height: 100%;
-  position: absolute;
+  background-color: #520029;
+  width: 210px;
 }
 
 #side-bar-logo {

@@ -1,4 +1,5 @@
 <div class='event-show-side-bar'>
+ <div id="left">	
 	<div class='logo'>
 		<%= image_tag "logo.png", id: "side-bar-logo" %>
 	</div>
@@ -8,6 +9,7 @@
 	<%= link_to "Seating Chart", event_path(current_event), class: "side-bar-link" %>
   <%= link_to "Back to My Events", events_path, class: "side-bar-link" %>
 	<%= link_to "Logout", logout_path(current_user), class: "side-bar-link", method: :delete  %>
+ </div>
 </div>
 
 
