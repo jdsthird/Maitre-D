@@ -1,6 +1,5 @@
 <div class='container'>
   <div class = "all-forms" id="signup-form">
-    <%= render partial: "new_user_form" %>
+    <%= render partial: "shared/signup_form", locals: {errors: @errors} %>
   </div>
-  <p>Already have an account? <%= link_to 'Login here', login_path %>.</p>
 </div>
