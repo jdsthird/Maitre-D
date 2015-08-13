@@ -37,7 +37,8 @@ guestList.fetch({success: function(){
         fill: "black",
         stroke: "#C61C6F",
         data: tableOne[ii].fullName(),
-        class: 'chair'
+        class: 'chair',
+        id: tableOne[ii].id
         
       });
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
@@ -52,6 +53,12 @@ guestList.fetch({success: function(){
       }, function() {
         $(this).parent().parent().parent().find("span").html("");
       })
+
+     $('.listed-guest').hover(
+        function(){
+
+        }, 
+     )
 
 }});
 
