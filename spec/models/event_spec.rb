@@ -38,7 +38,8 @@ RSpec.describe Event, type: :model do
 
     it 'deletes the event' do
       expect(event).to be_instance_of(Event)
-      expect{event.destroy}.to change{Event.count}.by(-1)
+      event.destroy
+      expect(event.id).to be nil
     end
   end
 end
