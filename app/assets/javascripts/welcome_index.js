@@ -25,7 +25,6 @@ $(document).ready(function() {
 
   $(".form").on("submit", "form", function(event) {
     event.preventDefault();
-    console.log($(this).attr("action"));
 
     var request = $.ajax({
       url: $(this).attr("action"),
@@ -39,7 +38,6 @@ $(document).ready(function() {
     });
 
     request.fail(function(response) {
-      console.log(response);
       $(".form").html(response.responseText);
     });
   });

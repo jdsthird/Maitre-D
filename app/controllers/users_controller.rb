@@ -19,10 +19,10 @@ class UsersController < ApplicationController
     successful_creation = @user.save
     if successful_creation && request.xhr?
       log_in @user
-      redirect_to users_path
+      redirect_to events_path
     elsif successful_creation
       log_in @user
-      redirect_to users_path
+      redirect_to events_path
     elsif request.xhr?
       @errors = @user.errors.full_messages
       render partial: "shared/signup_form", statusCode: 422, locals: {errors: @errors}
