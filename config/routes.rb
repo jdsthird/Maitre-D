@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :tables
 
-  resource :users, only: [:show, :new, :create]
+  resources :users, only: [:show, :new, :create]
   # get 'signup' => 'users#new'
   # post 'users' => 'users#create'
   # get 'users/:id' => 'users#show'

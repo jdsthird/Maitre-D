@@ -23,14 +23,8 @@ $(document).ready(function() {
     });
   });
 
-  // $(".form").find("#login-form").on("submit", "form", function(event) {
-  //   event.preventDefault();
-  //   console.log("listening");
-  // });
-
   $(".form").on("submit", "form", function(event) {
     event.preventDefault();
-    console.log($(this).attr("action"));
 
     var request = $.ajax({
       url: $(this).attr("action"),

@@ -47,12 +47,18 @@ guestList.fetch({success: function(){
   
      $('.chair').hover(
       function(){
-        $(this).parent().parent().parent().find("span").html(
-          $(this).attr("data")
-        );
+        var span = $(this).parent().parent().parent().find("span");
+        span.html($(this).attr("data"));
+        span.css("color", "yellow");
+        span.css("font-size", "1.2em");
+        $(this).css("fill", "#C61C6F");
+        // $(this).parent().parent().parent().find("span").html(
+        //   $(this).attr("data")
+        // );
 
       }, function() {
         $(this).parent().parent().parent().find("span").html("");
+        $(this).css("fill", "black");
       });
 
 }});
