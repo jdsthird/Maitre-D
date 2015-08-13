@@ -3,7 +3,22 @@
   text-align: center;
 }
 
+.new-pairing-container {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+/*option {
+  font-size: 1.5em;
+}*/
+
 .all-guests-container {
+  margin: 20px auto;
+  width: 1000px;
+}
+
+.all-pairing-container {
   margin: 20px auto;
   width: 1000px;
 }
@@ -11,6 +26,11 @@
 .guest-view-container {
   text-align: center;
   font-size: 35px;
+}
+
+.pairing-view-container {
+  text-align: center;
+  font-size: 1.5em;
 }
 
 #delete a {

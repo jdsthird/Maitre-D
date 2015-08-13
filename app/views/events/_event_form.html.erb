@@ -4,51 +4,51 @@
   <br>
   <%= form_for event do |f| %>
     <div class="input-field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name%>
+      <%= f.label :name %>
+      <%= f.text_field :name%><br>
     </div>
 
    <div class="input-field">
-        <%= f.label "number of tables" %><br>
+        <%= f.label "number of tables" %>
         <%= f.fields_for :table do |tf| %>
-        <%=tf.text_field :number %>
+        <%=tf.text_field :number %><br>
         <% end %>
     </div>
     <div class="input-field">
-      <%= f.label "seats per table" %><br>
+      <%= f.label "seats per table" %>
         <%= f.fields_for :table do |tf| %>
-        <%=tf.text_field :number_of_seats %>
+        <%=tf.text_field :number_of_seats %><br>
         <% end %>
     </div>
 
       <div class="input-field">
-      <%= f.label :address_line_one %><br>
-      <%= f.text_field :address_line_one%>
+      <%= f.label :address_line_one %>
+      <%= f.text_field :address_line_one%><br>
     </div>
 
     <div class="input-field">
-      <%= f.label :address_line_two %><br>
-      <%= f.text_field :address_line_two%>
+      <%= f.label :address_line_two %>
+      <%= f.text_field :address_line_two%><br>
     </div>
 
     <div class="input-field">
-      <%= f.label :state %><br>
-      <%= f.text_field :state%>
+      <%= f.label :state %>
+      <%= f.text_field :state%><br>
     </div>
 
     <div class="input-field">
-        <%= f.label :zip_code %><br>
-        <%= f.text_field :zip_code%>
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code%><br>
     </div>
 
     <div class="input-field">
-      <%= f.label :begins_at %><br>
-      <%= f.datetime_select :begins_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %>
+      <%= f.label :begins_at %>
+      <%= f.datetime_select :begins_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %><br>
     </div>
 
     <div class="input-field">
-      <%= f.label :ends_at %><br>
-      <%= f.datetime_select :ends_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %>
+      <%= f.label :ends_at %>
+      <%= f.datetime_select :ends_at, :ampm => true, :start_year => 2015, :order => [:month, :day, :year] %><br><br>
     </div>
 
     <div class="actions">
