@@ -13,11 +13,12 @@ class EventsController < ApplicationController
     @event = @user.events.where(id: params[:id]).first
 
     update_current_event(@event)
+
     @tables = @event.tables
     @guests = @event.guests
-    unless guests_seated?(@guests)
-      seat_guests(@tables, @guests)
-    end
+
+    seat_guests(@tables, @guests)
+
     @num_of_tables = @event.tables.length
     @number_of_seats = @event.tables.first.number_of_seats
 
@@ -27,7 +28,23 @@ class EventsController < ApplicationController
   end
 
   def new
-  	@event = Event.new
+    @user = current_user
+    @event = Event.new
+
+
+  end
+
+  def update
+    @user = current_user
+    @event = Event.find_by_id(params[:id])
+
+    @event.attributes = event_params
+
+    if @event.save
+      redirect_to @event
+    else
+      @errors = @event.errors.full_messages
+    end
   end
 
   def create
