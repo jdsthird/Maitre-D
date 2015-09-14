@@ -16,7 +16,7 @@ class GuestsController < ApplicationController
 
   def create
     guest = Guest.create!(guest_params)
-    guest.collection = Collection.create!
+    guest.collection = Collection.create!(event: current_event)
     guest.save
     event = guest.event
     if request.xhr?
