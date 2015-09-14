@@ -8,7 +8,14 @@ class PairingsController < ApplicationController
 	end
 
 	def create
-		Pairing.create(pairing_params)
+		pairing = Pairing.create(pairing_params)
+		first_collection = pairing.guest.collection
+		second_collection = pairing.pair.collection
+		if first_collection.num_guests > second_collection.num_guests
+			first_collection.merge(second_collection)
+		else
+			second_collection.merge(first_collection)
+		end
 		redirect_to pairings_path
 	end
 
