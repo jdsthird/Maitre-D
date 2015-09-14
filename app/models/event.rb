@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   has_many :tables
   has_many :guests
   has_many :pairings, through: :guests
+  has_many :collections
 
 
   validates_presence_of :name, message: "-- Please provide a name for this event."
