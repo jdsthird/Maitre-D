@@ -3,6 +3,7 @@ class Guest < ActiveRecord::Base
   belongs_to :table
   has_many :pairings
   has_many :pairs, through: :pairings
+  belongs_to :collection
 
   validates_presence_of :event
   validates_presence_of :first_name, message: "-- We require at least a first name for each guest."
