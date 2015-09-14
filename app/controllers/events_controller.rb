@@ -15,9 +15,9 @@ class EventsController < ApplicationController
     update_current_event(@event)
 
     @tables = @event.tables
-    @guests = @event.guests
+    @collections = @event.collections
 
-    seat_guests(@tables, @guests)
+    seat_guests(@tables, @collections)
 
     @num_of_tables = @event.tables.length
     @number_of_seats = @event.tables.first.number_of_seats

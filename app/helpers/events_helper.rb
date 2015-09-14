@@ -14,8 +14,8 @@ module EventsHelper
     end
   end
 
-  def seat_guests(tables, guests)
-    scg = SeatingChartGenerator.new(tables: tables, guests: guests)
+  def seat_guests(tables, collections)
+    scg = SeatingChartGenerator.new(tables: tables, collections: collections)
     full_tables = scg.make_seating_chart
     if full_tables
       full_tables.each(&:save)

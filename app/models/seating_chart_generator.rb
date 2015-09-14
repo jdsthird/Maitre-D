@@ -1,11 +1,10 @@
 class SeatingChartGenerator
-  attr_accessor :tables, :guests, :num_seats, :collections
+  attr_accessor :tables, :num_seats, :collections
 
   def initialize(args)
     @tables = args[:tables]
-    @guests = args[:guests]
     @num_seats = @tables.first.number_of_seats
-    @collections = isolate_collections
+    @collections = args[:collections].map { |collection| collection.guest_ids }.to_a
   end
 
   def make_seating_chart
@@ -28,24 +27,24 @@ class SeatingChartGenerator
   end
 
   
-  private
-    def isolate_collections
-      collections = []
-      prioritized_guests = self.guests.sort do |a,b|
-        b.pair_ids.length <=> a.pair_ids.length
-      end
-      p prioritized_guests.map{|g| g.pair_ids.length}
-      prioritized_guests.each do |guest|
-        added = false
-        collections.each do |collection|
-          unless (guest.pair_ids & collection).empty?
-            collection << guest.id
-            added = true
-            break
-          end
-        end
-        collections << [guest.id] unless added
-      end
-      collections.sort { |a,b| b.length <=> a.length }
-    end
+  # private
+  #   def isolate_collections
+  #     collections = []
+  #     prioritized_guests = self.guests.sort do |a,b|
+  #       b.pair_ids.length <=> a.pair_ids.length
+  #     end
+  #     p prioritized_guests.map{|g| g.pair_ids.length}
+  #     prioritized_guests.each do |guest|
+  #       added = false
+  #       collections.each do |collection|
+  #         unless (guest.pair_ids & collection).empty?
+  #           collection << guest.id
+  #           added = true
+  #           break
+  #         end
+  #       end
+  #       collections << [guest.id] unless added
+  #     end
+  #     collections.sort { |a,b| b.length <=> a.length }
+  #   end
 end
