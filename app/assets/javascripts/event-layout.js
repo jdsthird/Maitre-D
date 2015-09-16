@@ -22,19 +22,24 @@ var guestList = new Guests();
       cx: originX,
       cy: originY,
       r: tableRadius,
-      fill: "#520029"
+      fill: "#520029",
+      class: table
     });
 
     var tableOne = guestList.tableSelector(table_id);
     var rotationFactor = Math.floor(360 / tableOne.length);
     var drag = d3.behavior.drag()
-    .on("drag", dragmove);
+    .on("drag", dragmove)
+    .on("dragend", dragended);
 
     function dragmove(d) {
       var x = d3.event.x;
       var y = d3.event.y;
       d3.select(this).attr("transform", "translate(" + x + "," + y + ")");
     }
+    function dragended(d) {
+    d3.select(this).classed("dragging", false);
+}
 
 
 
@@ -54,7 +59,7 @@ var guestList = new Guests();
       });
 
       currentChair.attr("transform", "rotate(" + (ii*rotationFactor) + ", " + originX + ", " + originY + ")");
-      currentChair.call(drag);
+      currentChair.style("cursor", "pointer").call(drag);
     }
   });
   
